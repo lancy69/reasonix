@@ -119,6 +119,7 @@ def main():
                     "counts": "all config EvalSymlinks callback calls during one public load; exact user/project argument subsets and other=root/remaining calls",
                     "exclusions": "fixture setup, compilation, process startup/cleanup, benchmark observer overhead, boot/model/network execution",
                     "profiles": "typical=100 files/depth4/2 providers+2 plugins per source/2 JSON MCP; large-tree=10000/depth12/same config; large-config=10000/depth12/64 providers+128 plugins per source/96 JSON MCP",
+                    "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms in separate prepare processes; supported api_key_env plus dummy .env keys; complete retained identities and zero diagnostics validated outside timing",
                 }, "sources": {}}
     env = os.environ.copy()
     env.update({"GOMAXPROCS": "2", "GOFLAGS": "-p=2"})
@@ -147,6 +148,12 @@ def main():
         with tempfile.TemporaryDirectory(prefix="reasonix-config-measure-") as fixtures:
             env["REASONIX_CONFIG_BENCH_ROOT"] = fixtures
             metadata["fixture_root"] = fixtures
+            for label in ("before", "after"):
+                log = output / f"prepare-{label}.log"
+                command = [str(binaries[label]), "-test.run=^TestConfigLoadPrepareFixtures$", "-test.v", "-test.count=1", "-test.timeout=10m"]
+                _, elapsed = execute(command, sources[label], env, log)
+                commands.append({"command": command, "label": label, "phase": "prepare", "log": log.name,
+                                 "seconds_outside_measurement": elapsed})
             for label in ("before", "after"):
                 log = output / f"counts-{label}.log"
                 command = [str(binaries[label]), "-test.run=^TestConfigLoadMeasurementCounts$", "-test.v", "-test.count=1", "-test.timeout=10m"]
