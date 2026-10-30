@@ -1,0 +1,4992 @@
+{
+  "metadata": {
+    "platform": "Windows-2025Server-10.0.26100-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 26 Model 2 Stepping 1, AuthenticAMD",
+    "cpu_count": 4,
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "harness_sha256": "ca9dbe8eb2aa91899b133a88b53a2b279ba336304036f53e1247a85698326185",
+    "arguments": {
+      "before": "before",
+      "after": "after",
+      "output": "results",
+      "before_revision": "be65b117e00c364e39c08bc0dece34b51fa5de71",
+      "after_revision": "a4d746b83c57374ff5e1b59122db8267dfd4c6d6",
+      "warm_samples": 10,
+      "first_samples": 10,
+      "benchtime": "1s"
+    },
+    "runner": {
+      "RUNNER_OS": "Windows",
+      "RUNNER_ARCH": "X64",
+      "RUNNER_NAME": "GitHub Actions 1000000852",
+      "GITHUB_RUN_ID": "40992652436",
+      "GITHUB_RUN_ATTEMPT": "1"
+    },
+    "definitions": {
+      "warm": "one untimed public load, then repeated public loads; fresh stat/content and per-load resolution",
+      "first": "one public load per fresh test process; fixture preparation and process startup excluded",
+      "filesystem": "same absolute fixture paths before/after; no OS/page-cache purge; NOT disk-cold",
+      "order": "before/after then after/before on successive samples; serial, no competing timed phases",
+      "counts": "all config EvalSymlinks callback calls during one public load; exact user/project argument subsets and other=root/remaining calls",
+      "exclusions": "fixture setup, compilation, process startup/cleanup, benchmark observer overhead, boot/model/network execution",
+      "profiles": "typical=100 files/depth4/2 providers+2 plugins per source/2 JSON MCP; large-tree=10000/depth12/same config; large-config=10000/depth12/64 providers+128 plugins per source/96 JSON MCP",
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms in separate prepare processes; supported api_key_env plus dummy .env keys; complete retained identities and zero diagnostics validated outside timing"
+    },
+    "sources": {
+      "before": {
+        "expected_revision": "be65b117e00c364e39c08bc0dece34b51fa5de71",
+        "git_head": "be65b117e00c364e39c08bc0dece34b51fa5de71",
+        "provenance": "git-checkout"
+      },
+      "after": {
+        "expected_revision": "a4d746b83c57374ff5e1b59122db8267dfd4c6d6",
+        "git_head": "a4d746b83c57374ff5e1b59122db8267dfd4c6d6",
+        "provenance": "git-checkout"
+      }
+    },
+    "go_version": "go version go1.26.10 windows/amd64",
+    "go_env": {
+      "CGO_ENABLED": "1",
+      "GOARCH": "amd64",
+      "GOOS": "windows",
+      "GOTOOLCHAIN": "local",
+      "GOVERSION": "go1.26.10"
+    },
+    "fixture_root": "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\reasonix-config-measure-s4l8m1qb"
+  },
+  "counts": [
+    {
+      "mcp_bytes": 124,
+      "mode": "readonly",
+      "other": 13,
+      "path_depth": 4,
+      "plugins_per_source": 2,
+      "profile": "typical",
+      "project": 11,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 37,
+      "tree_files": 100,
+      "user": 13,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "before"
+    },
+    {
+      "mcp_bytes": 124,
+      "mode": "runtime",
+      "other": 14,
+      "path_depth": 4,
+      "plugins_per_source": 2,
+      "profile": "typical",
+      "project": 12,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 40,
+      "tree_files": 100,
+      "user": 14,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "before"
+    },
+    {
+      "mcp_bytes": 124,
+      "mode": "readonly",
+      "other": 13,
+      "path_depth": 12,
+      "plugins_per_source": 2,
+      "profile": "large-tree",
+      "project": 11,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 37,
+      "tree_files": 10000,
+      "user": 13,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "before"
+    },
+    {
+      "mcp_bytes": 124,
+      "mode": "runtime",
+      "other": 14,
+      "path_depth": 12,
+      "plugins_per_source": 2,
+      "profile": "large-tree",
+      "project": 12,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 40,
+      "tree_files": 10000,
+      "user": 14,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "before"
+    },
+    {
+      "mcp_bytes": 5200,
+      "mode": "readonly",
+      "other": 13,
+      "path_depth": 12,
+      "plugins_per_source": 128,
+      "profile": "large-config",
+      "project": 11,
+      "providers_per_source": 64,
+      "toml_bytes": 38997,
+      "total": 37,
+      "tree_files": 10000,
+      "user": 13,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "before"
+    },
+    {
+      "mcp_bytes": 5200,
+      "mode": "runtime",
+      "other": 14,
+      "path_depth": 12,
+      "plugins_per_source": 128,
+      "profile": "large-config",
+      "project": 12,
+      "providers_per_source": 64,
+      "toml_bytes": 38997,
+      "total": 40,
+      "tree_files": 10000,
+      "user": 14,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "before"
+    },
+    {
+      "mcp_bytes": 124,
+      "mode": "readonly",
+      "other": 3,
+      "path_depth": 4,
+      "plugins_per_source": 2,
+      "profile": "typical",
+      "project": 1,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 5,
+      "tree_files": 100,
+      "user": 1,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "after"
+    },
+    {
+      "mcp_bytes": 124,
+      "mode": "runtime",
+      "other": 4,
+      "path_depth": 4,
+      "plugins_per_source": 2,
+      "profile": "typical",
+      "project": 2,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 8,
+      "tree_files": 100,
+      "user": 2,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "after"
+    },
+    {
+      "mcp_bytes": 124,
+      "mode": "readonly",
+      "other": 3,
+      "path_depth": 12,
+      "plugins_per_source": 2,
+      "profile": "large-tree",
+      "project": 1,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 5,
+      "tree_files": 10000,
+      "user": 1,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "after"
+    },
+    {
+      "mcp_bytes": 124,
+      "mode": "runtime",
+      "other": 4,
+      "path_depth": 12,
+      "plugins_per_source": 2,
+      "profile": "large-tree",
+      "project": 2,
+      "providers_per_source": 2,
+      "toml_bytes": 983,
+      "total": 8,
+      "tree_files": 10000,
+      "user": 2,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "after"
+    },
+    {
+      "mcp_bytes": 5200,
+      "mode": "readonly",
+      "other": 3,
+      "path_depth": 12,
+      "plugins_per_source": 128,
+      "profile": "large-config",
+      "project": 1,
+      "providers_per_source": 64,
+      "toml_bytes": 38997,
+      "total": 5,
+      "tree_files": 10000,
+      "user": 1,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "after"
+    },
+    {
+      "mcp_bytes": 5200,
+      "mode": "runtime",
+      "other": 4,
+      "path_depth": 12,
+      "plugins_per_source": 128,
+      "profile": "large-config",
+      "project": 2,
+      "providers_per_source": 64,
+      "toml_bytes": 38997,
+      "total": 8,
+      "tree_files": 10000,
+      "user": 2,
+      "workspace_state": "pre-approved through public Roots.ApproveWorkspacePrograms",
+      "label": "after"
+    }
+  ],
+  "samples": [
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 79,
+      "ns_per_op": 13822394.0,
+      "log": "warm-00-before.log",
+      "sequence": 0
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 68,
+      "ns_per_op": 15298604.0,
+      "log": "warm-00-before.log",
+      "sequence": 0
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 60,
+      "ns_per_op": 19779173.0,
+      "log": "warm-00-before.log",
+      "sequence": 0
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 55,
+      "ns_per_op": 20574460.0,
+      "log": "warm-00-before.log",
+      "sequence": 0
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 120846200.0,
+      "log": "warm-00-before.log",
+      "sequence": 0
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 124198500.0,
+      "log": "warm-00-before.log",
+      "sequence": 0
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 246,
+      "ns_per_op": 4778306.0,
+      "log": "warm-00-after.log",
+      "sequence": 1
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 196,
+      "ns_per_op": 6076067.0,
+      "log": "warm-00-after.log",
+      "sequence": 1
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 189,
+      "ns_per_op": 6266212.0,
+      "log": "warm-00-after.log",
+      "sequence": 1
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 146,
+      "ns_per_op": 8182495.0,
+      "log": "warm-00-after.log",
+      "sequence": 1
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 108097870.0,
+      "log": "warm-00-after.log",
+      "sequence": 1
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 119542411.0,
+      "log": "warm-00-after.log",
+      "sequence": 1
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 246,
+      "ns_per_op": 4820163.0,
+      "log": "warm-01-after.log",
+      "sequence": 2
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 194,
+      "ns_per_op": 6284685.0,
+      "log": "warm-01-after.log",
+      "sequence": 2
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 190,
+      "ns_per_op": 6294619.0,
+      "log": "warm-01-after.log",
+      "sequence": 2
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 146,
+      "ns_per_op": 8111571.0,
+      "log": "warm-01-after.log",
+      "sequence": 2
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 107140850.0,
+      "log": "warm-01-after.log",
+      "sequence": 2
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 108488140.0,
+      "log": "warm-01-after.log",
+      "sequence": 2
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 84,
+      "ns_per_op": 13343483.0,
+      "log": "warm-01-before.log",
+      "sequence": 3
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 79,
+      "ns_per_op": 14776624.0,
+      "log": "warm-01-before.log",
+      "sequence": 3
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 63,
+      "ns_per_op": 19198286.0,
+      "log": "warm-01-before.log",
+      "sequence": 3
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 55,
+      "ns_per_op": 21366764.0,
+      "log": "warm-01-before.log",
+      "sequence": 3
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 118705678.0,
+      "log": "warm-01-before.log",
+      "sequence": 3
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 120645300.0,
+      "log": "warm-01-before.log",
+      "sequence": 3
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 82,
+      "ns_per_op": 13350483.0,
+      "log": "warm-02-before.log",
+      "sequence": 4
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 76,
+      "ns_per_op": 14641222.0,
+      "log": "warm-02-before.log",
+      "sequence": 4
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 64,
+      "ns_per_op": 18563047.0,
+      "log": "warm-02-before.log",
+      "sequence": 4
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 51,
+      "ns_per_op": 23531869.0,
+      "log": "warm-02-before.log",
+      "sequence": 4
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 8,
+      "ns_per_op": 132954938.0,
+      "log": "warm-02-before.log",
+      "sequence": 4
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 8,
+      "ns_per_op": 131123012.0,
+      "log": "warm-02-before.log",
+      "sequence": 4
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 238,
+      "ns_per_op": 4914232.0,
+      "log": "warm-02-after.log",
+      "sequence": 5
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 194,
+      "ns_per_op": 6191997.0,
+      "log": "warm-02-after.log",
+      "sequence": 5
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 187,
+      "ns_per_op": 6404554.0,
+      "log": "warm-02-after.log",
+      "sequence": 5
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 100,
+      "ns_per_op": 10864936.0,
+      "log": "warm-02-after.log",
+      "sequence": 5
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 8,
+      "ns_per_op": 131754550.0,
+      "log": "warm-02-after.log",
+      "sequence": 5
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 133252900.0,
+      "log": "warm-02-after.log",
+      "sequence": 5
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 210,
+      "ns_per_op": 5229377.0,
+      "log": "warm-03-after.log",
+      "sequence": 6
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 187,
+      "ns_per_op": 6333999.0,
+      "log": "warm-03-after.log",
+      "sequence": 6
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 188,
+      "ns_per_op": 6273738.0,
+      "log": "warm-03-after.log",
+      "sequence": 6
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 146,
+      "ns_per_op": 8205898.0,
+      "log": "warm-03-after.log",
+      "sequence": 6
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 106225140.0,
+      "log": "warm-03-after.log",
+      "sequence": 6
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 108062260.0,
+      "log": "warm-03-after.log",
+      "sequence": 6
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 82,
+      "ns_per_op": 13677930.0,
+      "log": "warm-03-before.log",
+      "sequence": 7
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 75,
+      "ns_per_op": 14885156.0,
+      "log": "warm-03-before.log",
+      "sequence": 7
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 64,
+      "ns_per_op": 18716547.0,
+      "log": "warm-03-before.log",
+      "sequence": 7
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 56,
+      "ns_per_op": 20571379.0,
+      "log": "warm-03-before.log",
+      "sequence": 7
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 121539856.0,
+      "log": "warm-03-before.log",
+      "sequence": 7
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 122563633.0,
+      "log": "warm-03-before.log",
+      "sequence": 7
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 85,
+      "ns_per_op": 14095955.0,
+      "log": "warm-04-before.log",
+      "sequence": 8
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 73,
+      "ns_per_op": 15686478.0,
+      "log": "warm-04-before.log",
+      "sequence": 8
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 57,
+      "ns_per_op": 18815351.0,
+      "log": "warm-04-before.log",
+      "sequence": 8
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 55,
+      "ns_per_op": 20463471.0,
+      "log": "warm-04-before.log",
+      "sequence": 8
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 119438667.0,
+      "log": "warm-04-before.log",
+      "sequence": 8
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 121293111.0,
+      "log": "warm-04-before.log",
+      "sequence": 8
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 256,
+      "ns_per_op": 4676904.0,
+      "log": "warm-04-after.log",
+      "sequence": 9
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 198,
+      "ns_per_op": 6034832.0,
+      "log": "warm-04-after.log",
+      "sequence": 9
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 192,
+      "ns_per_op": 6209541.0,
+      "log": "warm-04-after.log",
+      "sequence": 9
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 147,
+      "ns_per_op": 8056556.0,
+      "log": "warm-04-after.log",
+      "sequence": 9
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 106025900.0,
+      "log": "warm-04-after.log",
+      "sequence": 9
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 111678120.0,
+      "log": "warm-04-after.log",
+      "sequence": 9
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 246,
+      "ns_per_op": 4842363.0,
+      "log": "warm-05-after.log",
+      "sequence": 10
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 196,
+      "ns_per_op": 6063223.0,
+      "log": "warm-05-after.log",
+      "sequence": 10
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 193,
+      "ns_per_op": 6205374.0,
+      "log": "warm-05-after.log",
+      "sequence": 10
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 146,
+      "ns_per_op": 8100918.0,
+      "log": "warm-05-after.log",
+      "sequence": 10
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 105711710.0,
+      "log": "warm-05-after.log",
+      "sequence": 10
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 108293810.0,
+      "log": "warm-05-after.log",
+      "sequence": 10
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 82,
+      "ns_per_op": 13200538.0,
+      "log": "warm-05-before.log",
+      "sequence": 11
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 79,
+      "ns_per_op": 14590267.0,
+      "log": "warm-05-before.log",
+      "sequence": 11
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 62,
+      "ns_per_op": 18699692.0,
+      "log": "warm-05-before.log",
+      "sequence": 11
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 58,
+      "ns_per_op": 20351591.0,
+      "log": "warm-05-before.log",
+      "sequence": 11
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 117900844.0,
+      "log": "warm-05-before.log",
+      "sequence": 11
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 119915133.0,
+      "log": "warm-05-before.log",
+      "sequence": 11
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 85,
+      "ns_per_op": 13157136.0,
+      "log": "warm-06-before.log",
+      "sequence": 12
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 80,
+      "ns_per_op": 14759585.0,
+      "log": "warm-06-before.log",
+      "sequence": 12
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 61,
+      "ns_per_op": 19055915.0,
+      "log": "warm-06-before.log",
+      "sequence": 12
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 50,
+      "ns_per_op": 21938726.0,
+      "log": "warm-06-before.log",
+      "sequence": 12
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 124707400.0,
+      "log": "warm-06-before.log",
+      "sequence": 12
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 120472756.0,
+      "log": "warm-06-before.log",
+      "sequence": 12
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 258,
+      "ns_per_op": 4710102.0,
+      "log": "warm-06-after.log",
+      "sequence": 13
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 196,
+      "ns_per_op": 6078746.0,
+      "log": "warm-06-after.log",
+      "sequence": 13
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 193,
+      "ns_per_op": 6168911.0,
+      "log": "warm-06-after.log",
+      "sequence": 13
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 148,
+      "ns_per_op": 7983886.0,
+      "log": "warm-06-after.log",
+      "sequence": 13
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 105035170.0,
+      "log": "warm-06-after.log",
+      "sequence": 13
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 108329780.0,
+      "log": "warm-06-after.log",
+      "sequence": 13
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 259,
+      "ns_per_op": 4649573.0,
+      "log": "warm-07-after.log",
+      "sequence": 14
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 196,
+      "ns_per_op": 6061762.0,
+      "log": "warm-07-after.log",
+      "sequence": 14
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 194,
+      "ns_per_op": 6163506.0,
+      "log": "warm-07-after.log",
+      "sequence": 14
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 148,
+      "ns_per_op": 8004164.0,
+      "log": "warm-07-after.log",
+      "sequence": 14
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 105147330.0,
+      "log": "warm-07-after.log",
+      "sequence": 14
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 109423410.0,
+      "log": "warm-07-after.log",
+      "sequence": 14
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 82,
+      "ns_per_op": 13750011.0,
+      "log": "warm-07-before.log",
+      "sequence": 15
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 70,
+      "ns_per_op": 15616481.0,
+      "log": "warm-07-before.log",
+      "sequence": 15
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 61,
+      "ns_per_op": 18497905.0,
+      "log": "warm-07-before.log",
+      "sequence": 15
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 56,
+      "ns_per_op": 20293007.0,
+      "log": "warm-07-before.log",
+      "sequence": 15
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 118756111.0,
+      "log": "warm-07-before.log",
+      "sequence": 15
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 120488078.0,
+      "log": "warm-07-before.log",
+      "sequence": 15
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 86,
+      "ns_per_op": 13373801.0,
+      "log": "warm-08-before.log",
+      "sequence": 16
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 81,
+      "ns_per_op": 14737672.0,
+      "log": "warm-08-before.log",
+      "sequence": 16
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 62,
+      "ns_per_op": 18543965.0,
+      "log": "warm-08-before.log",
+      "sequence": 16
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 58,
+      "ns_per_op": 20497683.0,
+      "log": "warm-08-before.log",
+      "sequence": 16
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 118804478.0,
+      "log": "warm-08-before.log",
+      "sequence": 16
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 120404278.0,
+      "log": "warm-08-before.log",
+      "sequence": 16
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 258,
+      "ns_per_op": 4636580.0,
+      "log": "warm-08-after.log",
+      "sequence": 17
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 198,
+      "ns_per_op": 6091253.0,
+      "log": "warm-08-after.log",
+      "sequence": 17
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 193,
+      "ns_per_op": 6222821.0,
+      "log": "warm-08-after.log",
+      "sequence": 17
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 144,
+      "ns_per_op": 8488338.0,
+      "log": "warm-08-after.log",
+      "sequence": 17
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 108895570.0,
+      "log": "warm-08-after.log",
+      "sequence": 17
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 108509270.0,
+      "log": "warm-08-after.log",
+      "sequence": 17
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 256,
+      "ns_per_op": 4735264.0,
+      "log": "warm-09-after.log",
+      "sequence": 18
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 190,
+      "ns_per_op": 6343868.0,
+      "log": "warm-09-after.log",
+      "sequence": 18
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 183,
+      "ns_per_op": 6519510.0,
+      "log": "warm-09-after.log",
+      "sequence": 18
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 144,
+      "ns_per_op": 8161828.0,
+      "log": "warm-09-after.log",
+      "sequence": 18
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 10,
+      "ns_per_op": 106066030.0,
+      "log": "warm-09-after.log",
+      "sequence": 18
+    },
+    {
+      "label": "after",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 10,
+      "ns_per_op": 113042420.0,
+      "log": "warm-09-after.log",
+      "sequence": 18
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 75,
+      "ns_per_op": 14123483.0,
+      "log": "warm-09-before.log",
+      "sequence": 19
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 73,
+      "ns_per_op": 15542971.0,
+      "log": "warm-09-before.log",
+      "sequence": 19
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 61,
+      "ns_per_op": 18732426.0,
+      "log": "warm-09-before.log",
+      "sequence": 19
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 56,
+      "ns_per_op": 21015768.0,
+      "log": "warm-09-before.log",
+      "sequence": 19
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 9,
+      "ns_per_op": 119781744.0,
+      "log": "warm-09-before.log",
+      "sequence": 19
+    },
+    {
+      "label": "before",
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 9,
+      "ns_per_op": 122433800.0,
+      "log": "warm-09-before.log",
+      "sequence": 19
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 14720200.0,
+      "log": "first-00-typical-readonly-before.log",
+      "sequence": 20
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 5748200.0,
+      "log": "first-00-typical-readonly-after.log",
+      "sequence": 21
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 18117700.0,
+      "log": "first-00-typical-runtime-before.log",
+      "sequence": 22
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 9425700.0,
+      "log": "first-00-typical-runtime-after.log",
+      "sequence": 23
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 20610700.0,
+      "log": "first-00-large-tree-readonly-before.log",
+      "sequence": 24
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7399500.0,
+      "log": "first-00-large-tree-readonly-after.log",
+      "sequence": 25
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 24777100.0,
+      "log": "first-00-large-tree-runtime-before.log",
+      "sequence": 26
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 23548100.0,
+      "log": "first-00-large-tree-runtime-after.log",
+      "sequence": 27
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 123772000.0,
+      "log": "first-00-large-config-readonly-before.log",
+      "sequence": 28
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 120517000.0,
+      "log": "first-00-large-config-readonly-after.log",
+      "sequence": 29
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 132220400.0,
+      "log": "first-00-large-config-runtime-before.log",
+      "sequence": 30
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 118673200.0,
+      "log": "first-00-large-config-runtime-after.log",
+      "sequence": 31
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 5598700.0,
+      "log": "first-01-typical-readonly-after.log",
+      "sequence": 32
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 14786300.0,
+      "log": "first-01-typical-readonly-before.log",
+      "sequence": 33
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 8951400.0,
+      "log": "first-01-typical-runtime-after.log",
+      "sequence": 34
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 17942000.0,
+      "log": "first-01-typical-runtime-before.log",
+      "sequence": 35
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7390100.0,
+      "log": "first-01-large-tree-readonly-after.log",
+      "sequence": 36
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 20460000.0,
+      "log": "first-01-large-tree-readonly-before.log",
+      "sequence": 37
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 11282100.0,
+      "log": "first-01-large-tree-runtime-after.log",
+      "sequence": 38
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 23987100.0,
+      "log": "first-01-large-tree-runtime-before.log",
+      "sequence": 39
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 111694700.0,
+      "log": "first-01-large-config-readonly-after.log",
+      "sequence": 40
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 122973000.0,
+      "log": "first-01-large-config-readonly-before.log",
+      "sequence": 41
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 126719500.0,
+      "log": "first-01-large-config-runtime-after.log",
+      "sequence": 42
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 132159100.0,
+      "log": "first-01-large-config-runtime-before.log",
+      "sequence": 43
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 14768000.0,
+      "log": "first-02-typical-readonly-before.log",
+      "sequence": 44
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 6142500.0,
+      "log": "first-02-typical-readonly-after.log",
+      "sequence": 45
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 18804200.0,
+      "log": "first-02-typical-runtime-before.log",
+      "sequence": 46
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 9306300.0,
+      "log": "first-02-typical-runtime-after.log",
+      "sequence": 47
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 20819700.0,
+      "log": "first-02-large-tree-readonly-before.log",
+      "sequence": 48
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7415000.0,
+      "log": "first-02-large-tree-readonly-after.log",
+      "sequence": 49
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 25694800.0,
+      "log": "first-02-large-tree-runtime-before.log",
+      "sequence": 50
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 12134800.0,
+      "log": "first-02-large-tree-runtime-after.log",
+      "sequence": 51
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 124859300.0,
+      "log": "first-02-large-config-readonly-before.log",
+      "sequence": 52
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 113866700.0,
+      "log": "first-02-large-config-readonly-after.log",
+      "sequence": 53
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 176878000.0,
+      "log": "first-02-large-config-runtime-before.log",
+      "sequence": 54
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 119872500.0,
+      "log": "first-02-large-config-runtime-after.log",
+      "sequence": 55
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 5648200.0,
+      "log": "first-03-typical-readonly-after.log",
+      "sequence": 56
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 14731100.0,
+      "log": "first-03-typical-readonly-before.log",
+      "sequence": 57
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 9792700.0,
+      "log": "first-03-typical-runtime-after.log",
+      "sequence": 58
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 18616400.0,
+      "log": "first-03-typical-runtime-before.log",
+      "sequence": 59
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7717800.0,
+      "log": "first-03-large-tree-readonly-after.log",
+      "sequence": 60
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 19706400.0,
+      "log": "first-03-large-tree-readonly-before.log",
+      "sequence": 61
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 10895800.0,
+      "log": "first-03-large-tree-runtime-after.log",
+      "sequence": 62
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 27421100.0,
+      "log": "first-03-large-tree-runtime-before.log",
+      "sequence": 63
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 115101000.0,
+      "log": "first-03-large-config-readonly-after.log",
+      "sequence": 64
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 125961800.0,
+      "log": "first-03-large-config-readonly-before.log",
+      "sequence": 65
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 118046000.0,
+      "log": "first-03-large-config-runtime-after.log",
+      "sequence": 66
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 136526500.0,
+      "log": "first-03-large-config-runtime-before.log",
+      "sequence": 67
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 16189800.0,
+      "log": "first-04-typical-readonly-before.log",
+      "sequence": 68
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 5933700.0,
+      "log": "first-04-typical-readonly-after.log",
+      "sequence": 69
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 18411400.0,
+      "log": "first-04-typical-runtime-before.log",
+      "sequence": 70
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 9578500.0,
+      "log": "first-04-typical-runtime-after.log",
+      "sequence": 71
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 21314500.0,
+      "log": "first-04-large-tree-readonly-before.log",
+      "sequence": 72
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 8255400.0,
+      "log": "first-04-large-tree-readonly-after.log",
+      "sequence": 73
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 25816000.0,
+      "log": "first-04-large-tree-runtime-before.log",
+      "sequence": 74
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 11970000.0,
+      "log": "first-04-large-tree-runtime-after.log",
+      "sequence": 75
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 131116000.0,
+      "log": "first-04-large-config-readonly-before.log",
+      "sequence": 76
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 116057700.0,
+      "log": "first-04-large-config-readonly-after.log",
+      "sequence": 77
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 133236100.0,
+      "log": "first-04-large-config-runtime-before.log",
+      "sequence": 78
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 121274100.0,
+      "log": "first-04-large-config-runtime-after.log",
+      "sequence": 79
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 11253800.0,
+      "log": "first-05-typical-readonly-after.log",
+      "sequence": 80
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 15232700.0,
+      "log": "first-05-typical-readonly-before.log",
+      "sequence": 81
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 10093300.0,
+      "log": "first-05-typical-runtime-after.log",
+      "sequence": 82
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 21305100.0,
+      "log": "first-05-typical-runtime-before.log",
+      "sequence": 83
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7785100.0,
+      "log": "first-05-large-tree-readonly-after.log",
+      "sequence": 84
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 22516300.0,
+      "log": "first-05-large-tree-readonly-before.log",
+      "sequence": 85
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 12607500.0,
+      "log": "first-05-large-tree-runtime-after.log",
+      "sequence": 86
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 25915100.0,
+      "log": "first-05-large-tree-runtime-before.log",
+      "sequence": 87
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 116903300.0,
+      "log": "first-05-large-config-readonly-after.log",
+      "sequence": 88
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 134777600.0,
+      "log": "first-05-large-config-readonly-before.log",
+      "sequence": 89
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 119381300.0,
+      "log": "first-05-large-config-runtime-after.log",
+      "sequence": 90
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 140490300.0,
+      "log": "first-05-large-config-runtime-before.log",
+      "sequence": 91
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 14678600.0,
+      "log": "first-06-typical-readonly-before.log",
+      "sequence": 92
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 5636500.0,
+      "log": "first-06-typical-readonly-after.log",
+      "sequence": 93
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 20300600.0,
+      "log": "first-06-typical-runtime-before.log",
+      "sequence": 94
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 8975900.0,
+      "log": "first-06-typical-runtime-after.log",
+      "sequence": 95
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 20789600.0,
+      "log": "first-06-large-tree-readonly-before.log",
+      "sequence": 96
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7521500.0,
+      "log": "first-06-large-tree-readonly-after.log",
+      "sequence": 97
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 24572700.0,
+      "log": "first-06-large-tree-runtime-before.log",
+      "sequence": 98
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 11629800.0,
+      "log": "first-06-large-tree-runtime-after.log",
+      "sequence": 99
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 128153500.0,
+      "log": "first-06-large-config-readonly-before.log",
+      "sequence": 100
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 112872900.0,
+      "log": "first-06-large-config-readonly-after.log",
+      "sequence": 101
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 131017100.0,
+      "log": "first-06-large-config-runtime-before.log",
+      "sequence": 102
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 117899700.0,
+      "log": "first-06-large-config-runtime-after.log",
+      "sequence": 103
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 6010000.0,
+      "log": "first-07-typical-readonly-after.log",
+      "sequence": 104
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 14970000.0,
+      "log": "first-07-typical-readonly-before.log",
+      "sequence": 105
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 10245900.0,
+      "log": "first-07-typical-runtime-after.log",
+      "sequence": 106
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 19525000.0,
+      "log": "first-07-typical-runtime-before.log",
+      "sequence": 107
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7816300.0,
+      "log": "first-07-large-tree-readonly-after.log",
+      "sequence": 108
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 20967400.0,
+      "log": "first-07-large-tree-readonly-before.log",
+      "sequence": 109
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 11073400.0,
+      "log": "first-07-large-tree-runtime-after.log",
+      "sequence": 110
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 23663400.0,
+      "log": "first-07-large-tree-runtime-before.log",
+      "sequence": 111
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 112447700.0,
+      "log": "first-07-large-config-readonly-after.log",
+      "sequence": 112
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 124698400.0,
+      "log": "first-07-large-config-readonly-before.log",
+      "sequence": 113
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 117845800.0,
+      "log": "first-07-large-config-runtime-after.log",
+      "sequence": 114
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 130136100.0,
+      "log": "first-07-large-config-runtime-before.log",
+      "sequence": 115
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 15071800.0,
+      "log": "first-08-typical-readonly-before.log",
+      "sequence": 116
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 5930700.0,
+      "log": "first-08-typical-readonly-after.log",
+      "sequence": 117
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 18403900.0,
+      "log": "first-08-typical-runtime-before.log",
+      "sequence": 118
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 9475900.0,
+      "log": "first-08-typical-runtime-after.log",
+      "sequence": 119
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 20964100.0,
+      "log": "first-08-large-tree-readonly-before.log",
+      "sequence": 120
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 7658500.0,
+      "log": "first-08-large-tree-readonly-after.log",
+      "sequence": 121
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 23704300.0,
+      "log": "first-08-large-tree-runtime-before.log",
+      "sequence": 122
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 11187800.0,
+      "log": "first-08-large-tree-runtime-after.log",
+      "sequence": 123
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 123445000.0,
+      "log": "first-08-large-config-readonly-before.log",
+      "sequence": 124
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 113839600.0,
+      "log": "first-08-large-config-readonly-after.log",
+      "sequence": 125
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 130723900.0,
+      "log": "first-08-large-config-runtime-before.log",
+      "sequence": 126
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 129459200.0,
+      "log": "first-08-large-config-runtime-after.log",
+      "sequence": 127
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 5813200.0,
+      "log": "first-09-typical-readonly-after.log",
+      "sequence": 128
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 14871200.0,
+      "log": "first-09-typical-readonly-before.log",
+      "sequence": 129
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 9235100.0,
+      "log": "first-09-typical-runtime-after.log",
+      "sequence": 130
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 18304700.0,
+      "log": "first-09-typical-runtime-before.log",
+      "sequence": 131
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 8136200.0,
+      "log": "first-09-large-tree-readonly-after.log",
+      "sequence": 132
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 20320600.0,
+      "log": "first-09-large-tree-readonly-before.log",
+      "sequence": 133
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 11596700.0,
+      "log": "first-09-large-tree-runtime-after.log",
+      "sequence": 134
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 25854400.0,
+      "log": "first-09-large-tree-runtime-before.log",
+      "sequence": 135
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 113614200.0,
+      "log": "first-09-large-config-readonly-after.log",
+      "sequence": 136
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "iterations": 1,
+      "ns_per_op": 126946900.0,
+      "log": "first-09-large-config-readonly-before.log",
+      "sequence": 137
+    },
+    {
+      "label": "after",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 118260700.0,
+      "log": "first-09-large-config-runtime-after.log",
+      "sequence": 138
+    },
+    {
+      "label": "before",
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "iterations": 1,
+      "ns_per_op": 133485600.0,
+      "log": "first-09-large-config-runtime-before.log",
+      "sequence": 139
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "go",
+        "test",
+        "-c",
+        "-o",
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "./internal/contract/config"
+      ],
+      "label": "before",
+      "seconds_outside_measurement": 53.90700000000001
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "-c",
+        "-o",
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "./internal/contract/config"
+      ],
+      "label": "after",
+      "seconds_outside_measurement": 7.453000000000003
+    },
+    {
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^TestConfigLoadPrepareFixtures$",
+        "-test.v",
+        "-test.count=1",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "phase": "prepare",
+      "log": "prepare-before.log",
+      "seconds_outside_measurement": 10.343999999999994
+    },
+    {
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^TestConfigLoadPrepareFixtures$",
+        "-test.v",
+        "-test.count=1",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "phase": "prepare",
+      "log": "prepare-after.log",
+      "seconds_outside_measurement": 0.42199999999999704
+    },
+    {
+      "sequence": 0,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-00-before.log"
+    },
+    {
+      "sequence": 1,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-00-after.log"
+    },
+    {
+      "sequence": 2,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-01-after.log"
+    },
+    {
+      "sequence": 3,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-01-before.log"
+    },
+    {
+      "sequence": 4,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-02-before.log"
+    },
+    {
+      "sequence": 5,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-02-after.log"
+    },
+    {
+      "sequence": 6,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-03-after.log"
+    },
+    {
+      "sequence": 7,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-03-before.log"
+    },
+    {
+      "sequence": 8,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-04-before.log"
+    },
+    {
+      "sequence": 9,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-04-after.log"
+    },
+    {
+      "sequence": 10,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-05-after.log"
+    },
+    {
+      "sequence": 11,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-05-before.log"
+    },
+    {
+      "sequence": 12,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-06-before.log"
+    },
+    {
+      "sequence": 13,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-06-after.log"
+    },
+    {
+      "sequence": 14,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-07-after.log"
+    },
+    {
+      "sequence": 15,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-07-before.log"
+    },
+    {
+      "sequence": 16,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-08-before.log"
+    },
+    {
+      "sequence": 17,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-08-after.log"
+    },
+    {
+      "sequence": 18,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "warm-09-after.log"
+    },
+    {
+      "sequence": 19,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadWarm$",
+        "-test.benchtime=1s",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "warm-09-before.log"
+    },
+    {
+      "sequence": 20,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-00-typical-readonly-before.log"
+    },
+    {
+      "sequence": 21,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-00-typical-readonly-after.log"
+    },
+    {
+      "sequence": 22,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-00-typical-runtime-before.log"
+    },
+    {
+      "sequence": 23,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-00-typical-runtime-after.log"
+    },
+    {
+      "sequence": 24,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-00-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 25,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-00-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 26,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-00-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 27,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-00-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 28,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-00-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 29,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-00-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 30,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-00-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 31,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-00-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 32,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-01-typical-readonly-after.log"
+    },
+    {
+      "sequence": 33,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-01-typical-readonly-before.log"
+    },
+    {
+      "sequence": 34,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-01-typical-runtime-after.log"
+    },
+    {
+      "sequence": 35,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-01-typical-runtime-before.log"
+    },
+    {
+      "sequence": 36,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-01-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 37,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-01-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 38,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-01-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 39,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-01-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 40,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-01-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 41,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-01-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 42,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-01-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 43,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-01-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 44,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-02-typical-readonly-before.log"
+    },
+    {
+      "sequence": 45,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-02-typical-readonly-after.log"
+    },
+    {
+      "sequence": 46,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-02-typical-runtime-before.log"
+    },
+    {
+      "sequence": 47,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-02-typical-runtime-after.log"
+    },
+    {
+      "sequence": 48,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-02-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 49,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-02-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 50,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-02-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 51,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-02-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 52,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-02-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 53,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-02-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 54,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-02-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 55,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-02-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 56,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-03-typical-readonly-after.log"
+    },
+    {
+      "sequence": 57,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-03-typical-readonly-before.log"
+    },
+    {
+      "sequence": 58,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-03-typical-runtime-after.log"
+    },
+    {
+      "sequence": 59,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-03-typical-runtime-before.log"
+    },
+    {
+      "sequence": 60,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-03-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 61,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-03-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 62,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-03-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 63,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-03-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 64,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-03-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 65,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-03-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 66,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-03-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 67,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-03-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 68,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-04-typical-readonly-before.log"
+    },
+    {
+      "sequence": 69,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-04-typical-readonly-after.log"
+    },
+    {
+      "sequence": 70,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-04-typical-runtime-before.log"
+    },
+    {
+      "sequence": 71,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-04-typical-runtime-after.log"
+    },
+    {
+      "sequence": 72,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-04-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 73,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-04-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 74,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-04-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 75,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-04-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 76,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-04-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 77,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-04-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 78,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-04-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 79,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-04-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 80,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-05-typical-readonly-after.log"
+    },
+    {
+      "sequence": 81,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-05-typical-readonly-before.log"
+    },
+    {
+      "sequence": 82,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-05-typical-runtime-after.log"
+    },
+    {
+      "sequence": 83,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-05-typical-runtime-before.log"
+    },
+    {
+      "sequence": 84,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-05-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 85,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-05-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 86,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-05-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 87,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-05-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 88,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-05-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 89,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-05-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 90,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-05-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 91,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-05-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 92,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-06-typical-readonly-before.log"
+    },
+    {
+      "sequence": 93,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-06-typical-readonly-after.log"
+    },
+    {
+      "sequence": 94,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-06-typical-runtime-before.log"
+    },
+    {
+      "sequence": 95,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-06-typical-runtime-after.log"
+    },
+    {
+      "sequence": 96,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-06-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 97,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-06-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 98,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-06-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 99,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-06-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 100,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-06-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 101,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-06-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 102,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-06-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 103,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-06-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 104,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-07-typical-readonly-after.log"
+    },
+    {
+      "sequence": 105,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-07-typical-readonly-before.log"
+    },
+    {
+      "sequence": 106,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-07-typical-runtime-after.log"
+    },
+    {
+      "sequence": 107,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-07-typical-runtime-before.log"
+    },
+    {
+      "sequence": 108,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-07-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 109,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-07-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 110,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-07-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 111,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-07-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 112,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-07-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 113,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-07-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 114,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-07-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 115,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-07-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 116,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-08-typical-readonly-before.log"
+    },
+    {
+      "sequence": 117,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-08-typical-readonly-after.log"
+    },
+    {
+      "sequence": 118,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-08-typical-runtime-before.log"
+    },
+    {
+      "sequence": 119,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-08-typical-runtime-after.log"
+    },
+    {
+      "sequence": 120,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-08-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 121,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-08-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 122,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-08-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 123,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-08-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 124,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-08-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 125,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-08-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 126,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-08-large-config-runtime-before.log"
+    },
+    {
+      "sequence": 127,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-08-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 128,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-09-typical-readonly-after.log"
+    },
+    {
+      "sequence": 129,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-09-typical-readonly-before.log"
+    },
+    {
+      "sequence": 130,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-09-typical-runtime-after.log"
+    },
+    {
+      "sequence": 131,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^typical$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-09-typical-runtime-before.log"
+    },
+    {
+      "sequence": 132,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-09-large-tree-readonly-after.log"
+    },
+    {
+      "sequence": 133,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-09-large-tree-readonly-before.log"
+    },
+    {
+      "sequence": 134,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-09-large-tree-runtime-after.log"
+    },
+    {
+      "sequence": 135,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-tree$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-09-large-tree-runtime-before.log"
+    },
+    {
+      "sequence": 136,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-09-large-config-readonly-after.log"
+    },
+    {
+      "sequence": 137,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^readonly$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-09-large-config-readonly-before.log"
+    },
+    {
+      "sequence": 138,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\after.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "after",
+      "log": "first-09-large-config-runtime-after.log"
+    },
+    {
+      "sequence": 139,
+      "command": [
+        "D:\\a\\reasonix\\reasonix\\results\\before.test.exe",
+        "-test.run=^$",
+        "-test.bench=^BenchmarkConfigLoadFirst$/^large-config$/^runtime$",
+        "-test.benchtime=1x",
+        "-test.count=1",
+        "-test.cpu=2",
+        "-test.timeout=10m"
+      ],
+      "label": "before",
+      "log": "first-09-large-config-runtime-before.log"
+    }
+  ],
+  "summary": [
+    {
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "readonly",
+      "before": {
+        "n": 10,
+        "median_ns": 125410550.0,
+        "mean_ns": 126670350.0,
+        "min_ns": 122973000.0,
+        "max_ns": 134777600.0,
+        "q1_ns": 124003600.0,
+        "q3_ns": 127851850.0,
+        "stdev_ns": 3769936.1132959975
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 113853150.0,
+        "mean_ns": 114691480.0,
+        "min_ns": 111694700.0,
+        "max_ns": 120517000.0,
+        "q1_ns": 113058225.0,
+        "q3_ns": 115818525.0,
+        "stdev_ns": 2598120.276832635
+      },
+      "median_delta_ms": -11.5574,
+      "median_change_percent": -9.215652112202676
+    },
+    {
+      "phase": "first",
+      "profile": "large-config",
+      "mode": "runtime",
+      "before": {
+        "n": 10,
+        "median_ns": 132728250.0,
+        "mean_ns": 137687310.0,
+        "min_ns": 130136100.0,
+        "max_ns": 176878000.0,
+        "q1_ns": 131302600.0,
+        "q3_ns": 135766275.0,
+        "stdev_ns": 14114735.469434455
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 119027250.0,
+        "mean_ns": 120743200.0,
+        "min_ns": 117845800.0,
+        "max_ns": 129459200.0,
+        "q1_ns": 118099675.0,
+        "q3_ns": 120923700.0,
+        "stdev_ns": 4065882.1060134047
+      },
+      "median_delta_ms": -13.701,
+      "median_change_percent": -10.322595227466646
+    },
+    {
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "before": {
+        "n": 10,
+        "median_ns": 20804650.0,
+        "mean_ns": 20846930.0,
+        "min_ns": 19706400.0,
+        "max_ns": 22516300.0,
+        "q1_ns": 20497675.0,
+        "q3_ns": 20966575.0,
+        "stdev_ns": 731895.5087078118
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 7688150.0,
+        "mean_ns": 7709540.0,
+        "min_ns": 7390100.0,
+        "max_ns": 8255400.0,
+        "q1_ns": 7441625.0,
+        "q3_ns": 7808500.0,
+        "stdev_ns": 301857.5425594
+      },
+      "median_delta_ms": -13.1165,
+      "median_change_percent": -63.04600173518901
+    },
+    {
+      "phase": "first",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "before": {
+        "n": 10,
+        "median_ns": 25235950.0,
+        "mean_ns": 25140600.0,
+        "min_ns": 23663400.0,
+        "max_ns": 27421100.0,
+        "q1_ns": 24133500.0,
+        "q3_ns": 25844800.0,
+        "stdev_ns": 1206631.0390688798
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 11613250.0,
+        "mean_ns": 12792600.0,
+        "min_ns": 10895800.0,
+        "max_ns": 23548100.0,
+        "q1_ns": 11211375.0,
+        "q3_ns": 12093600.0,
+        "stdev_ns": 3815424.6404124754
+      },
+      "median_delta_ms": -13.6227,
+      "median_change_percent": -53.98132426161884
+    },
+    {
+      "phase": "first",
+      "profile": "typical",
+      "mode": "readonly",
+      "before": {
+        "n": 10,
+        "median_ns": 14828750.0,
+        "mean_ns": 15001970.0,
+        "min_ns": 14678600.0,
+        "max_ns": 16189800.0,
+        "q1_ns": 14740325.0,
+        "q3_ns": 15046350.0,
+        "stdev_ns": 452863.0036899803
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 5871950.0,
+        "mean_ns": 6371550.0,
+        "min_ns": 5598700.0,
+        "max_ns": 11253800.0,
+        "q1_ns": 5673200.0,
+        "q3_ns": 5990925.0,
+        "stdev_ns": 1724553.3884007316
+      },
+      "median_delta_ms": -8.9568,
+      "median_change_percent": -60.40158475933575
+    },
+    {
+      "phase": "first",
+      "profile": "typical",
+      "mode": "runtime",
+      "before": {
+        "n": 10,
+        "median_ns": 18513900.0,
+        "mean_ns": 18973100.0,
+        "min_ns": 17942000.0,
+        "max_ns": 21305100.0,
+        "q1_ns": 18329500.0,
+        "q3_ns": 19344800.0,
+        "stdev_ns": 1082279.8169707418
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 9450800.0,
+        "mean_ns": 9508070.0,
+        "min_ns": 8951400.0,
+        "max_ns": 10245900.0,
+        "q1_ns": 9252900.0,
+        "q3_ns": 9739150.0,
+        "stdev_ns": 433204.0526382714
+      },
+      "median_delta_ms": -9.0631,
+      "median_change_percent": -48.95294886544704
+    },
+    {
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "readonly",
+      "before": {
+        "n": 10,
+        "median_ns": 119610205.5,
+        "mean_ns": 121343591.6,
+        "min_ns": 117900844.0,
+        "max_ns": 132954938.0,
+        "q1_ns": 118768202.75,
+        "q3_ns": 121366442.0,
+        "stdev_ns": 4527028.076833194
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 106145585.0,
+        "mean_ns": 109010012.0,
+        "min_ns": 105035170.0,
+        "max_ns": 131754550.0,
+        "q1_ns": 105790257.5,
+        "q3_ns": 107858615.0,
+        "stdev_ns": 8086881.140036896
+      },
+      "median_delta_ms": -13.4646205,
+      "median_change_percent": -11.257083326388905
+    },
+    {
+      "phase": "warm",
+      "profile": "large-config",
+      "mode": "runtime",
+      "before": {
+        "n": 10,
+        "median_ns": 120969205.5,
+        "mean_ns": 122353760.1,
+        "min_ns": 119915133.0,
+        "max_ns": 131123012.0,
+        "q1_ns": 120476586.5,
+        "q3_ns": 122531174.75,
+        "stdev_ns": 3352667.898591722
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 108966340.0,
+        "mean_ns": 112862252.1,
+        "min_ns": 108062260.0,
+        "max_ns": 133252900.0,
+        "q1_ns": 108369370.0,
+        "q3_ns": 112701345.0,
+        "stdev_ns": 8001378.419767412
+      },
+      "median_delta_ms": -12.0028655,
+      "median_change_percent": -9.922248766029963
+    },
+    {
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "readonly",
+      "before": {
+        "n": 10,
+        "median_ns": 18724486.5,
+        "mean_ns": 18860230.7,
+        "min_ns": 18497905.0,
+        "max_ns": 19779173.0,
+        "q1_ns": 18597208.25,
+        "q3_ns": 18995774.0,
+        "stdev_ns": 391778.94106159464
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 6244516.5,
+        "mean_ns": 6272878.6,
+        "min_ns": 6163506.0,
+        "max_ns": 6519510.0,
+        "q1_ns": 6206415.75,
+        "q3_ns": 6289398.75,
+        "stdev_ns": 111817.90700380289
+      },
+      "median_delta_ms": -12.47997,
+      "median_change_percent": -66.65053271287307
+    },
+    {
+      "phase": "warm",
+      "profile": "large-tree",
+      "mode": "runtime",
+      "before": {
+        "n": 10,
+        "median_ns": 20572919.5,
+        "mean_ns": 21060471.8,
+        "min_ns": 20293007.0,
+        "max_ns": 23531869.0,
+        "q1_ns": 20472024.0,
+        "q3_ns": 21279015.0,
+        "stdev_ns": 1011875.1863471436
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 8136699.5,
+        "mean_ns": 8416059.0,
+        "min_ns": 7983886.0,
+        "max_ns": 10864936.0,
+        "q1_ns": 8067646.5,
+        "q3_ns": 8200047.25,
+        "stdev_ns": 871988.5445435112
+      },
+      "median_delta_ms": -12.43622,
+      "median_change_percent": -60.449466105187454
+    },
+    {
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "readonly",
+      "before": {
+        "n": 10,
+        "median_ns": 13525865.5,
+        "mean_ns": 13589521.4,
+        "min_ns": 13157136.0,
+        "max_ns": 14123483.0,
+        "q1_ns": 13345233.0,
+        "q3_ns": 13804298.25,
+        "stdev_ns": 354630.853942268
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 4756785.0,
+        "mean_ns": 4799286.4,
+        "min_ns": 4636580.0,
+        "max_ns": 5229377.0,
+        "q1_ns": 4685203.5,
+        "q3_ns": 4836813.0,
+        "stdev_ns": 175385.18552742386
+      },
+      "median_delta_ms": -8.7690805,
+      "median_change_percent": -64.83193626315446
+    },
+    {
+      "phase": "warm",
+      "profile": "typical",
+      "mode": "runtime",
+      "before": {
+        "n": 10,
+        "median_ns": 14830890.0,
+        "mean_ns": 15053506.0,
+        "min_ns": 14590267.0,
+        "max_ns": 15686478.0,
+        "q1_ns": 14743150.25,
+        "q3_ns": 15481879.25,
+        "stdev_ns": 433712.3882169944
+      },
+      "after": {
+        "n": 10,
+        "median_ns": 6084999.5,
+        "mean_ns": 6156043.2,
+        "min_ns": 6034832.0,
+        "max_ns": 6343868.0,
+        "q1_ns": 6066434.0,
+        "q3_ns": 6261513.0,
+        "stdev_ns": 121816.49204511587
+      },
+      "median_delta_ms": -8.7458905,
+      "median_change_percent": -58.97077316330982
+    }
+  ]
+}
