@@ -1,0 +1,67 @@
+name: Windows isolated config resolver verification
+on:
+  push:
+    branches: [evidence/12533-windows-implementation]
+    paths:
+      - .github/workflows/12533-windows-implementation.yml
+      - internal/contract/config/path_resolution_benchmark_test.go
+      - scripts/benchmark-config-load.py
+      - scripts/verify-windows-config.py
+      - native/**
+permissions:
+  contents: read
+jobs:
+  verify-and-measure:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    env:
+      GOMAXPROCS: '2'
+      GOFLAGS: '-p=2'
+      GIT_CONFIG_COUNT: '1'
+      GIT_CONFIG_KEY_0: core.autocrlf
+      GIT_CONFIG_VALUE_0: 'false'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: esengine/DeepSeek-Reasonix
+          ref: 5f372e2229826a00b3a368ec1a1da9d1a1782147
+          path: before
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: lancy69/reasonix
+          ref: e66697fa87f1e1b11668489a9e2d9d25e05da486
+          path: after
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version-file: before/go.mod
+          cache: false
+      - name: Native SDK control, candidate suites and actual assembly smoke
+        run: >-
+          python harness/scripts/verify-windows-config.py
+          --before before --after after --output results/verification
+          --before-revision 5f372e2229826a00b3a368ec1a1da9d1a1782147
+          --after-revision e66697fa87f1e1b11668489a9e2d9d25e05da486
+          --compatibility-source harness/native/path_access_windows_test.go.source
+          --compatibility-sha256 e6c7fc03da415d2408ab03cde54a730b8d57c8e83c5f1c5bf447cd6679e3b69b
+          --smoke-source harness/native/smoke/main.go
+          --smoke-sha256 21bbab9af7cc8cd03d81c62fa2e796177d7539ac082230893d71ba8e9a29a572
+          --effect-test TestWindowsConfigLoadReducesPathResolutionAllocations
+      - name: Paired actual guarded-backend public loads and separate CPU profiles
+        run: >-
+          python harness/scripts/benchmark-config-load.py
+          --before before --after after --output results/measurements
+          --before-revision 5f372e2229826a00b3a368ec1a1da9d1a1782147
+          --after-revision e66697fa87f1e1b11668489a9e2d9d25e05da486
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: windows-isolated-config-resolver
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
