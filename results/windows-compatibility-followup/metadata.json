@@ -1,0 +1,17 @@
+{
+  "platform": "Windows-2025Server-10.0.26100-SP0",
+  "go_version": "go version go1.26.10 windows/amd64",
+  "baseline": "be65b117e00c364e39c08bc0dece34b51fa5de71",
+  "candidate": "a4d746b83c57374ff5e1b59122db8267dfd4c6d6",
+  "probe_sha256": "ed1f2dd181c7603677c5e0aaffd8813c79870114b27872598275ea9589a2d99b",
+  "compatibility_runtime_executed": true,
+  "mode": "compatibility-only",
+  "timing_or_cpu_profiles_executed": false,
+  "scope": "constructed filesystem states under test-user authority; not observed production incidents or equivalence proof",
+  "runner": {
+    "RUNNER_OS": "Windows",
+    "RUNNER_ARCH": "X64",
+    "RUNNER_NAME": "GitHub Actions 1000000866",
+    "GITHUB_RUN_ID": "41180403047"
+  }
+}
