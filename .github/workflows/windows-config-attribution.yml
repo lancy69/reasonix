@@ -1,4 +1,4 @@
-name: Windows config resolver compatibility
+name: Windows namespace no-alias control
 on:
   push:
     branches: [evidence/12533-windows-attribution]
@@ -32,12 +32,12 @@ jobs:
         with:
           go-version-file: before/go.mod
           cache: false
-      - name: Probe public namespace and readable-file compatibility
+      - name: Probe explicit namespace home without an ordinary alias
         run: python harness/scripts/investigate-config-paths.py --before before --after after --output results --compatibility-only
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
-          name: windows-config-compatibility-followup
+          name: windows-config-noalias-control
           path: results/
           if-no-files-found: error
           retention-days: 30
