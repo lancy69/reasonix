@@ -28,7 +28,7 @@ func resolveConfigAccessPathUnpinned(path string, userConfig bool) (string, erro
 	if err != nil {
 		return "", fmt.Errorf("resolve config path %q: %w", path, err)
 	}
-	resolved, err := evalSymlinksAllowMissing(logical)
+	resolved, err := evalConfigSymlinksAllowMissing(logical)
 	if err != nil && plainConfigEntry(logical) {
 		return logical, nil
 	}
@@ -48,7 +48,7 @@ func resolveConfigAccessPathUnpinned(path string, userConfig bool) (string, erro
 	if filepath.Base(projectRoot) == ".reasonix" && filepath.Base(logical) == projectConfigFile {
 		projectRoot = filepath.Dir(projectRoot)
 	}
-	root, err := evalSymlinksAllowMissing(projectRoot)
+	root, err := evalConfigSymlinksAllowMissing(projectRoot)
 	if err != nil {
 		return "", fmt.Errorf("resolve project root %q: %w", root, err)
 	}
@@ -71,19 +71,25 @@ func plainConfigEntry(path string) bool {
 	return info.Mode()&os.ModeSymlink == 0 && !info.IsDir()
 }
 
-var evalSymlinks = filepath.EvalSymlinks
+func evalConfigSymlinksAllowMissing(path string) (string, error) {
+	return evalSymlinksAllowMissingWith(path, evalSymlinks)
+}
 
 // evalSymlinksAllowMissing canonicalizes every existing path component while
 // allowing a new file (and missing parent directories) to be created later.
 // A broken final symlink is not "missing": EvalSymlinks sees the link and
 // returns an error, which prevents a write from replacing it.
 func evalSymlinksAllowMissing(path string) (string, error) {
+	return evalSymlinksAllowMissingWith(path, filepath.EvalSymlinks)
+}
+
+func evalSymlinksAllowMissingWith(path string, evaluate func(string) (string, error)) (string, error) {
 	path = filepath.Clean(path)
 	current := path
 	var suffix []string
 	for {
 		if _, err := os.Lstat(current); err == nil {
-			resolved, err := evalSymlinks(current)
+			resolved, err := evaluate(current)
 			if err != nil {
 				return "", err
 			}
