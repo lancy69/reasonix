@@ -1,4 +1,4 @@
-name: Windows config path attribution
+name: Windows config resolver compatibility
 on:
   push:
     branches: [evidence/12533-windows-attribution]
@@ -32,12 +32,12 @@ jobs:
         with:
           go-version-file: before/go.mod
           cache: false
-      - name: Run static-fixture causal controls and compatibility probes
-        run: python harness/scripts/investigate-config-paths.py --before before --after after --output results
+      - name: Probe public namespace and readable-file compatibility
+        run: python harness/scripts/investigate-config-paths.py --before before --after after --output results --compatibility-only
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
-          name: windows-config-attribution
+          name: windows-config-compatibility-followup
           path: results/
           if-no-files-found: error
           retention-days: 30
