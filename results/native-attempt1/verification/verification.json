@@ -1,0 +1,22 @@
+{
+  "started_at": "2026-10-31T09:31:35.934164+00:00",
+  "sources": {
+    "before": "5f372e2229826a00b3a368ec1a1da9d1a1782147",
+    "after": "e66697fa87f1e1b11668489a9e2d9d25e05da486"
+  },
+  "commands": [],
+  "state": "failed",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "definitions": {
+    "allocation_effect": "AllocsPerRun over real public Roots loads; fixture setup and exact-setting validation excluded from allocation measurements",
+    "compatibility": "Same frozen public Windows test source on baseline and candidate; skips recorded, not treated as exercised behavior",
+    "smoke": "Non-test go run through public config Load and real boot.Build; no model/network request"
+  },
+  "compatibility_sha256": "e6c7fc03da415d2408ab03cde54a730b8d57c8e83c5f1c5bf447cd6679e3b69b",
+  "smoke_sha256": "21bbab9af7cc8cd03d81c62fa2e796177d7539ac082230893d71ba8e9a29a572",
+  "error": {
+    "type": "RuntimeError",
+    "message": "baseline did not fail solely at the expected allocation effect test"
+  },
+  "finished_at": "2026-10-31T09:32:46.251661+00:00"
+}

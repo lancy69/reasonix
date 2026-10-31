@@ -1,0 +1,18 @@
+{
+  "run": 41188978166,
+  "payload": "d823a4759bf4f18e1c0823a96bf58d6d9c73028e",
+  "candidate": "e66697fa87f1e1b11668489a9e2d9d25e05da486",
+  "baseline": "5f372e2229826a00b3a368ec1a1da9d1a1782147",
+  "state": "failed_before_candidate_execution",
+  "observed_allocation_effect_before": {
+    "population": "one real public readonly Roots load over ordinary owned user/project fixtures; no providers/plugins",
+    "runs": 3,
+    "sdk_allocations": 3978,
+    "default_allocations": 3978,
+    "fixture_setup_and_setting_validation": "outside measurement"
+  },
+  "unexpected_fixture_assertion": "Nested outside-junction SDK control returned nil error. Test treated nil as acceptance before inspecting settings/warnings. This is NOT proof of an outside read. Investigation pending.",
+  "candidate_executed": false,
+  "new_performance_claim": false,
+  "fork_actions": "Original selected-action settings and allowed_actions=all restored, then disabled in separate PUT; observed enabled=false."
+}

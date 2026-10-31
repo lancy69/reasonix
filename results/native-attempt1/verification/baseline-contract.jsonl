@@ -1,0 +1,74 @@
+go: downloading github.com/BurntSushi/toml v1.6.0
+go: downloading github.com/joho/godotenv v1.5.1
+go: downloading github.com/zalando/go-keyring v0.2.8
+go: downloading golang.org/x/text v0.43.0
+go: downloading modernc.org/sqlite v1.61.0
+go: downloading golang.org/x/sys v0.49.0
+go: downloading github.com/danieljoos/wincred v1.2.3
+go: downloading github.com/bmatcuk/doublestar/v4 v4.10.3
+go: downloading golang.org/x/net v0.62.0
+go: downloading mvdan.cc/sh/v3 v3.14.1
+go: downloading github.com/santhosh-tekuri/jsonschema/v6 v6.0.3
+go: downloading modernc.org/libc v1.79.0
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/charmbracelet/x/ansi v0.11.9
+go: downloading github.com/rivo/uniseg v0.4.7
+go: downloading golang.org/x/mod v0.42.0
+go: downloading github.com/dustin/go-humanize v1.1.0
+go: downloading github.com/mattn/go-isatty v0.0.24
+go: downloading github.com/ncruces/go-strftime v1.1.0
+go: downloading modernc.org/mathutil v1.7.1
+go: downloading modernc.org/memory v1.12.1
+go: downloading github.com/clipperhouse/displaywidth v0.11.0
+go: downloading github.com/clipperhouse/uax29/v2 v2.7.0
+go: downloading github.com/lucasb-eyer/go-colorful v1.4.1
+go: downloading github.com/mattn/go-runewidth v0.0.31
+go: downloading github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+go: downloading github.com/aymanbagabas/go-udiff v0.4.1
+{"Time":"2026-10-31T09:32:45.4693774Z","Action":"start","Package":"reasonix/internal/contract/config"}
+{"Time":"2026-10-31T09:32:45.5494486Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics"}
+{"Time":"2026-10-31T09:32:45.5494486Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics\n"}
+{"Time":"2026-10-31T09:32:45.5494486Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/ordinary"}
+{"Time":"2026-10-31T09:32:45.5494486Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/ordinary","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics/ordinary\n"}
+{"Time":"2026-10-31T09:32:45.5706051Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/ordinary","Output":"--- PASS: TestWindowsConfigLoadKeepsSDKPathSemantics/ordinary (0.02s)\n"}
+{"Time":"2026-10-31T09:32:45.570954Z","Action":"pass","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/ordinary","Elapsed":0.02}
+{"Time":"2026-10-31T09:32:45.570954Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/case"}
+{"Time":"2026-10-31T09:32:45.570954Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/case","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics/case\n"}
+{"Time":"2026-10-31T09:32:45.5915845Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/case","Output":"--- PASS: TestWindowsConfigLoadKeepsSDKPathSemantics/case (0.02s)\n"}
+{"Time":"2026-10-31T09:32:45.5915845Z","Action":"pass","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/case","Elapsed":0.02}
+{"Time":"2026-10-31T09:32:45.5915845Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/extended"}
+{"Time":"2026-10-31T09:32:45.5915845Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/extended","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics/extended\n"}
+{"Time":"2026-10-31T09:32:45.6110285Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/extended","Output":"--- PASS: TestWindowsConfigLoadKeepsSDKPathSemantics/extended (0.02s)\n"}
+{"Time":"2026-10-31T09:32:45.6113376Z","Action":"pass","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/extended","Elapsed":0.02}
+{"Time":"2026-10-31T09:32:45.6113376Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/literal-space-home"}
+{"Time":"2026-10-31T09:32:45.6113376Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/literal-space-home","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics/literal-space-home\n"}
+{"Time":"2026-10-31T09:32:45.6357796Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/literal-space-home","Output":"--- PASS: TestWindowsConfigLoadKeepsSDKPathSemantics/literal-space-home (0.02s)\n"}
+{"Time":"2026-10-31T09:32:45.6361442Z","Action":"pass","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/literal-space-home","Elapsed":0.02}
+{"Time":"2026-10-31T09:32:45.6361442Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-inside"}
+{"Time":"2026-10-31T09:32:45.6361442Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-inside","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics/junction-inside\n"}
+{"Time":"2026-10-31T09:32:45.6739822Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-inside","Output":"--- PASS: TestWindowsConfigLoadKeepsSDKPathSemantics/junction-inside (0.04s)\n"}
+{"Time":"2026-10-31T09:32:45.6739822Z","Action":"pass","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-inside","Elapsed":0.04}
+{"Time":"2026-10-31T09:32:45.6739822Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-outside"}
+{"Time":"2026-10-31T09:32:45.6739822Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-outside","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics/junction-outside\n"}
+{"Time":"2026-10-31T09:32:45.7053387Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-outside","Output":"    path_access_windows_test.go:107: SDK control accepted an escaping or broken project link\n"}
+{"Time":"2026-10-31T09:32:45.706526Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-outside","Output":"--- FAIL: TestWindowsConfigLoadKeepsSDKPathSemantics/junction-outside (0.03s)\n"}
+{"Time":"2026-10-31T09:32:45.706526Z","Action":"fail","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/junction-outside","Elapsed":0.03}
+{"Time":"2026-10-31T09:32:45.706526Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/broken-link"}
+{"Time":"2026-10-31T09:32:45.706526Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/broken-link","Output":"=== RUN   TestWindowsConfigLoadKeepsSDKPathSemantics/broken-link\n"}
+{"Time":"2026-10-31T09:32:45.7164857Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/broken-link","Output":"--- PASS: TestWindowsConfigLoadKeepsSDKPathSemantics/broken-link (0.01s)\n"}
+{"Time":"2026-10-31T09:32:45.7164857Z","Action":"pass","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics/broken-link","Elapsed":0.01}
+{"Time":"2026-10-31T09:32:45.7164857Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics","Output":"--- FAIL: TestWindowsConfigLoadKeepsSDKPathSemantics (0.17s)\n"}
+{"Time":"2026-10-31T09:32:45.7164857Z","Action":"fail","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadKeepsSDKPathSemantics","Elapsed":0.17}
+{"Time":"2026-10-31T09:32:45.7164857Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadObservesSourceReplacement"}
+{"Time":"2026-10-31T09:32:45.7164857Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadObservesSourceReplacement","Output":"=== RUN   TestWindowsConfigLoadObservesSourceReplacement\n"}
+{"Time":"2026-10-31T09:32:45.84232Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadObservesSourceReplacement","Output":"--- PASS: TestWindowsConfigLoadObservesSourceReplacement (0.13s)\n"}
+{"Time":"2026-10-31T09:32:45.84232Z","Action":"pass","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadObservesSourceReplacement","Elapsed":0.13}
+{"Time":"2026-10-31T09:32:45.84232Z","Action":"run","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadReducesPathResolutionAllocations"}
+{"Time":"2026-10-31T09:32:45.84232Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadReducesPathResolutionAllocations","Output":"=== RUN   TestWindowsConfigLoadReducesPathResolutionAllocations\n"}
+{"Time":"2026-10-31T09:32:45.9304435Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadReducesPathResolutionAllocations","Output":"    path_access_windows_test.go:255: CONFIG_ALLOCATION_EFFECT {\"code\":\"config.path_allocations\",\"default_allocs\":3978,\"runs\":3,\"sdk_allocs\":3978,\"settings_validated\":true}\n"}
+{"Time":"2026-10-31T09:32:45.9304435Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadReducesPathResolutionAllocations","Output":"    path_access_windows_test.go:257: public config load allocations = 3978, SDK = 3978; want fewer\n"}
+{"Time":"2026-10-31T09:32:45.9313854Z","Action":"output","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadReducesPathResolutionAllocations","Output":"--- FAIL: TestWindowsConfigLoadReducesPathResolutionAllocations (0.09s)\n"}
+{"Time":"2026-10-31T09:32:45.9313854Z","Action":"fail","Package":"reasonix/internal/contract/config","Test":"TestWindowsConfigLoadReducesPathResolutionAllocations","Elapsed":0.09}
+{"Time":"2026-10-31T09:32:45.9313854Z","Action":"output","Package":"reasonix/internal/contract/config","Output":"FAIL\n"}
+{"Time":"2026-10-31T09:32:45.935284Z","Action":"output","Package":"reasonix/internal/contract/config","Output":"FAIL\treasonix/internal/contract/config\t0.465s\n"}
+{"Time":"2026-10-31T09:32:45.935284Z","Action":"fail","Package":"reasonix/internal/contract/config","Elapsed":0.466}
