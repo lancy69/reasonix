@@ -1,0 +1,24 @@
+{
+  "started_at": "2026-10-31T10:01:34.579077+00:00",
+  "sources": {
+    "before": "5f372e2229826a00b3a368ec1a1da9d1a1782147",
+    "after": "9deea7884f8c1d399e5ae40c0f8df4434257789f"
+  },
+  "commands": [],
+  "state": "failed",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "definitions": {
+    "allocation_effect": "AllocsPerRun over real public Roots loads; fixture setup and exact-setting validation excluded from allocation measurements",
+    "compatibility": "Same frozen public Windows test source on baseline and candidate; skips recorded, not treated as exercised behavior",
+    "smoke": "Non-test go run through public config Load and real boot.Build; no model/network request"
+  },
+  "compatibility_sha256": "5d5b5346ddda7bcec957d092a1c7b8d7184d1af1c2a3a5437f9cbc3abfaff892",
+  "smoke_sha256": "21bbab9af7cc8cd03d81c62fa2e796177d7539ac082230893d71ba8e9a29a572",
+  "permission_sha256": "5598841ea7558d3016f8996c02c7b0a760bda5b4865e91da0a46301f2aed9de3",
+  "permission_probe": {},
+  "error": {
+    "type": "JSONDecodeError",
+    "message": "Unterminated string starting at: line 1 column 939 (char 938)"
+  },
+  "finished_at": "2026-10-31T10:02:50.720574+00:00"
+}

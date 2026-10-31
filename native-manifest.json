@@ -14,7 +14,7 @@
     ".github/workflows/12533-windows-implementation.yml": "f68620b9629b631b70a319ecf1b1de1ec3a50c3d276eaa89f635a2b8dce71613",
     "internal/contract/config/path_resolution_benchmark_test.go": "ca9dbe8eb2aa91899b133a88b53a2b279ba336304036f53e1247a85698326185",
     "scripts/benchmark-config-load.py": "b90e634b8a4afb8448ec98af55b34be5950515614a6eebc7a2af62f95473d5b7",
-    "scripts/verify-windows-config.py": "36f72acc436838581d7e09c845531d1e086be5f64648d272a036f051324d7553",
+    "scripts/verify-windows-config.py": "3f0f6da7785394d58268aeb2eb613bc4d81cc8247e01d031b196274e7453b860",
     "native/path_access_windows_test.go.source": "5d5b5346ddda7bcec957d092a1c7b8d7184d1af1c2a3a5437f9cbc3abfaff892",
     "native/smoke/main.go": "21bbab9af7cc8cd03d81c62fa2e796177d7539ac082230893d71ba8e9a29a572",
     "native/path_access_metadata_probe_windows_test.go.source": "5598841ea7558d3016f8996c02c7b0a760bda5b4865e91da0a46301f2aed9de3"
@@ -24,5 +24,23 @@
     "durable_results": "92835485bd1ca3a0d55cd310163ea0721cf81ced",
     "reason": "Correct nil-error proxy to actual retained settings; add independent metadata-permission probe"
   },
-  "purpose": "Actual guarded backend versus refreshed SDK; unchanged production, corrected consumer contract test, controlled DACL observations, relative allocation effect, actual Build smoke, paired public loads and separate CPU diagnostics."
+  "purpose": "Actual guarded backend versus refreshed SDK; unchanged production, corrected consumer contract test, controlled DACL observations, relative allocation effect, actual Build smoke, paired public loads and separate CPU diagnostics.",
+  "previous_attempts": [
+    {
+      "run": 41188978166,
+      "cause": "test used nil-error acceptance proxy; corrected to actual settings"
+    },
+    {
+      "run": 41190968393,
+      "cause": "Go output frames split long protocol JSON; fixed by reassembling per-test output streams",
+      "candidate_executed": false,
+      "probe_records_recovered": 12,
+      "DACL_restoration_observed": [
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ]
 }

@@ -36,12 +36,18 @@ def go_events(text):
     return events
 
 
-def allocation_metric(events, test_name):
-    metrics = []
+def protocol_rows(events, marker, test_name=None):
+    streams = {}
     for event in events:
-        text = event.get("Output", "")
-        if event.get("Test") == test_name and METRIC_MARKER in text:
-            metrics.append(json.loads(text.partition(METRIC_MARKER)[2].strip()))
+        if event.get("Action") != "output" or (test_name is not None and event.get("Test") != test_name):
+            continue
+        streams.setdefault((event.get("Package"), event.get("Test")), []).append(event.get("Output", ""))
+    return [json.loads(line.partition(marker)[2].strip()) for stream in streams.values()
+            for line in "".join(stream).splitlines() if marker in line]
+
+
+def allocation_metric(events, test_name):
+    metrics = protocol_rows(events, METRIC_MARKER, test_name)
     if len(metrics) != 1:
         raise RuntimeError("allocation effect must emit exactly one structured metric")
     metric = metrics[0]
@@ -129,8 +135,7 @@ def main():
                 result = run(command, source, env, output, label + "-permission-probe.jsonl")
                 events = go_events(result.stdout)
                 marker = "CONFIG_METADATA_FALLBACK_PROBE "
-                rows = [json.loads(event["Output"].partition(marker)[2].strip()) for event in events
-                        if marker in event.get("Output", "")]
+                rows = protocol_rows(events, marker)
                 if not rows or any(row.get("code") != "config.metadata_fallback_probe" for row in rows):
                     raise RuntimeError("permission probe did not emit its structured protocol")
                 record["permission_probe"][label] = rows
