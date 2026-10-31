@@ -1,0 +1,45 @@
+{
+  "platform": "Windows-2025Server-10.0.26100-SP0",
+  "machine": "AMD64",
+  "cpu_count": 4,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "baseline": "be65b117e00c364e39c08bc0dece34b51fa5de71",
+  "candidate": "a4d746b83c57374ff5e1b59122db8267dfd4c6d6",
+  "go_version": "go version go1.26.10 windows/amd64",
+  "go_env": {
+    "CGO_ENABLED": "1",
+    "GOARCH": "amd64",
+    "GOOS": "windows",
+    "GOTOOLCHAIN": "local",
+    "GOVERSION": "go1.26.10"
+  },
+  "runner": {
+    "RUNNER_OS": "Windows",
+    "RUNNER_ARCH": "X64",
+    "RUNNER_NAME": "GitHub Actions 1000000865",
+    "GITHUB_RUN_ID": "41178728925"
+  },
+  "hashes": {
+    "internal\\contract\\config\\path_resolution_benchmark_test.go": "ca9dbe8eb2aa91899b133a88b53a2b279ba336304036f53e1247a85698326185",
+    "internal\\contract\\config\\path_resolution_mechanism_test.go": "13433948f2a15a988d1cde0c4497fc1a569a35360bee0e757ea8c6fb11f7afbb",
+    "internal\\contract\\config\\path_resolution_mechanism_windows_test.go": "aa97fdd63b49b93f50f3b986732b8df9f33b5ba24f75ab305cacf16f16e3c627"
+  },
+  "samples_per_cell": 10,
+  "profiles": [
+    "typical",
+    "large-tree"
+  ],
+  "warning": "BACKEND_MEMO IS UNSAFE AS A PRODUCTION FIX; unchanged static fixtures only; no security equivalence is established",
+  "definitions": {
+    "stock": "exact baseline with unchanged callers/guards/stat/absolute reads and original filepath.EvalSymlinks",
+    "backend-memo": "exact baseline, replacing only existing evalSymlinks backend hook for one public call; fresh memo each load, filepath.EvalSymlinks on misses",
+    "handle-backend": "exact baseline, existing fileutil.ResolveExistingPath at every backend access; original filepath backend on helper errors; no memo; non-Windows helper is identical filepath.EvalSymlinks",
+    "full-a4": "exact published candidate production implementation; no experimental backend replacement",
+    "fixture": "unchanged admitted ca9d harness; real public approvals prepared in separate processes; all retained identities and zero diagnostics asserted outside timers",
+    "timing": "warm1s or one load per fresh first-process; setup/startup/cleanup excluded; same physical paths; no disk-cold claim; no duration observer during timing",
+    "order": "cyclic order and its reverse on successive samples; paired reversal balances before/after positions; variants serial",
+    "attribution": "separate observer-inclusive public-load walltime and inclusive callback/backend durations by user_file/project_file/root_other; observer overhead is not a speedup estimate",
+    "cpu": "CPU collection starts after fixture preparation and preload, stops before validation; CPU samples cannot account for blocked syscall walltime",
+    "micro": "real isolated backend/wrapper/Lstat/Stat/read/available Root operations; not public-load timing or a security proof"
+  }
+}

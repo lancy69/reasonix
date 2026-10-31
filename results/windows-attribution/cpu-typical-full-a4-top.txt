@@ -1,0 +1,69 @@
+File: candidate.test.exe
+Build ID: D:\a\reasonix\reasonix\results\candidate.test.exe2026-10-31 07:01:04.8796992 +0000 UTC
+Type: cpu
+Time: 2026-10-31 07:05:23 UTC
+Duration: 5.89s, Total samples = 6.01s (102.05%)
+Showing nodes accounting for 5.18s, 86.19% of 6.01s total
+Dropped 242 nodes (cum <= 0.03s)
+Showing top 60 nodes out of 193
+      flat  flat%   sum%        cum   cum%
+     4.21s 70.05% 70.05%      4.23s 70.38%  runtime.cgocall
+     0.14s  2.33% 72.38%      0.14s  2.33%  runtime.semawakeup
+     0.08s  1.33% 73.71%      0.08s  1.33%  runtime.semasleep
+     0.06s     1% 74.71%      0.34s  5.66%  github.com/BurntSushi/toml.(*lexer).nextItem (inline)
+     0.06s     1% 75.71%      0.06s     1%  runtime.nextFreeFast (inline)
+     0.06s     1% 76.71%      0.06s     1%  runtime.preemptM
+     0.05s  0.83% 77.54%      0.08s  1.33%  runtime.chanrecv
+     0.05s  0.83% 78.37%      0.13s  2.16%  runtime.scanObject
+     0.04s  0.67% 79.03%      0.08s  1.33%  github.com/BurntSushi/toml.(*lexer).next
+     0.04s  0.67% 79.70%      0.10s  1.66%  github.com/BurntSushi/toml.Key.String
+     0.04s  0.67% 80.37%      0.04s  0.67%  runtime.memclrNoHeapPointers
+     0.03s   0.5% 80.87%      0.14s  2.33%  runtime.mallocgcSmallScanNoHeader
+     0.03s   0.5% 81.36%      0.04s  0.67%  runtime.typePointers.next
+     0.03s   0.5% 81.86%      0.04s  0.67%  syscall.encodeWTF16
+     0.02s  0.33% 82.20%      0.36s  5.99%  github.com/BurntSushi/toml.(*parser).next
+     0.02s  0.33% 82.53%      0.08s  1.33%  runtime.growslice
+     0.02s  0.33% 82.86%      0.09s  1.50%  runtime.mallocgcSmallNoscan
+     0.01s  0.17% 83.03%      0.14s  2.33%  github.com/BurntSushi/toml.(*MetaData).unify
+     0.01s  0.17% 83.19%      0.56s  9.32%  github.com/BurntSushi/toml.(*parser).topLevel
+     0.01s  0.17% 83.36%      0.09s  1.50%  github.com/BurntSushi/toml.(*parser).value
+     0.01s  0.17% 83.53%      0.05s  0.83%  github.com/BurntSushi/toml.(*parser).valueArray
+     0.01s  0.17% 83.69%      0.05s  0.83%  github.com/BurntSushi/toml.lexRawString
+     0.01s  0.17% 83.86%      0.67s 11.15%  github.com/BurntSushi/toml.parse
+     0.01s  0.17% 84.03%      1.11s 18.47%  os.Lstat
+     0.01s  0.17% 84.19%      0.26s  4.33%  reasonix/internal/contract/config.Roots.resolveCredentialForRootGlobalFirst
+     0.01s  0.17% 84.36%      1.16s 19.30%  reasonix/internal/contract/config.configReadPaths.result
+     0.01s  0.17% 84.53%      0.64s 10.65%  reasonix/internal/contract/config.heldEndpoints.gateEndpoints
+     0.01s  0.17% 84.69%      0.04s  0.67%  runtime.(*mcache).nextFree
+     0.01s  0.17% 84.86%      0.21s  3.49%  runtime.gcDrain
+     0.01s  0.17% 85.02%      0.09s  1.50%  runtime.lock2
+     0.01s  0.17% 85.19%      0.09s  1.50%  runtime.makeslice
+     0.01s  0.17% 85.36%      0.30s  4.99%  runtime.mallocgc
+     0.01s  0.17% 85.52%      0.04s  0.67%  runtime.mallocgcSmallScanHeader
+     0.01s  0.17% 85.69%      0.04s  0.67%  runtime.newobject
+     0.01s  0.17% 85.86%      0.09s  1.50%  runtime.selectnbrecv
+     0.01s  0.17% 86.02%      0.05s  0.83%  strings.(*Builder).Grow
+     0.01s  0.17% 86.19%      0.04s  0.67%  strings.(*Builder).grow
+         0     0% 86.19%      0.86s 14.31%  github.com/BurntSushi/toml.(*Decoder).Decode
+         0     0% 86.19%      0.10s  1.66%  github.com/BurntSushi/toml.(*MetaData).unifySlice
+         0     0% 86.19%      0.10s  1.66%  github.com/BurntSushi/toml.(*MetaData).unifySliceArray
+         0     0% 86.19%      0.14s  2.33%  github.com/BurntSushi/toml.(*MetaData).unifyStruct
+         0     0% 86.19%      0.04s  0.67%  github.com/BurntSushi/toml.(*parser).addContext
+         0     0% 86.19%      0.12s  2.00%  github.com/BurntSushi/toml.(*parser).nextPos (inline)
+         0     0% 86.19%      0.08s  1.33%  github.com/BurntSushi/toml.(*parser).setType
+         0     0% 86.19%      0.07s  1.16%  github.com/BurntSushi/toml.(*parser).setValue
+         0     0% 86.19%      0.86s 14.31%  github.com/BurntSushi/toml.Decode
+         0     0% 86.19%      0.04s  0.67%  github.com/joho/godotenv.Unmarshal
+         0     0% 86.19%      0.04s  0.67%  github.com/joho/godotenv.UnmarshalBytes (inline)
+         0     0% 86.19%      0.14s  2.33%  internal/poll.(*FD).Close
+         0     0% 86.19%      0.12s  2.00%  internal/poll.(*FD).Read
+         0     0% 86.19%      0.12s  2.00%  internal/poll.(*FD).Read.func1
+         0     0% 86.19%      0.14s  2.33%  internal/poll.(*FD).decref
+         0     0% 86.19%      0.14s  2.33%  internal/poll.(*FD).destroy
+         0     0% 86.19%      0.12s  2.00%  internal/poll.(*FD).execIO
+         0     0% 86.19%      0.27s  4.49%  internal/syscall/windows.NtCreateFile
+         0     0% 86.19%      0.28s  4.66%  internal/syscall/windows.Openat
+         0     0% 86.19%      0.14s  2.33%  os.(*File).Close
+         0     0% 86.19%      0.12s  2.00%  os.(*File).Read
+         0     0% 86.19%      0.15s  2.50%  os.(*File).Stat
+         0     0% 86.19%      0.12s  2.00%  os.(*File).read (inline)

@@ -1,0 +1,69 @@
+File: baseline.test.exe
+Build ID: D:\a\reasonix\reasonix\results\baseline.test.exe2026-10-31 07:00:53.8820167 +0000 UTC
+Type: cpu
+Time: 2026-10-31 07:05:08 UTC
+Duration: 5.93s, Total samples = 5.99s (101.06%)
+Showing nodes accounting for 5.38s, 89.82% of 5.99s total
+Dropped 176 nodes (cum <= 0.03s)
+Showing top 60 nodes out of 233
+      flat  flat%   sum%        cum   cum%
+     4.26s 71.12% 71.12%      4.26s 71.12%  runtime.cgocall
+     0.09s  1.50% 72.62%      0.09s  1.50%  runtime.nextFreeFast (inline)
+     0.07s  1.17% 73.79%      0.07s  1.17%  github.com/BurntSushi/toml.(*lexer).next
+     0.06s  1.00% 74.79%      0.33s  5.51%  github.com/BurntSushi/toml.(*lexer).nextItem (inline)
+     0.06s  1.00% 75.79%      0.12s  2.00%  runtime.scanObject
+     0.05s  0.83% 76.63%      0.05s  0.83%  runtime.preemptM
+     0.04s  0.67% 77.30%      0.08s  1.34%  github.com/BurntSushi/toml.Key.String
+     0.04s  0.67% 77.96%      0.04s  0.67%  runtime.memmove
+     0.04s  0.67% 78.63%      0.04s  0.67%  runtime.semasleep
+     0.04s  0.67% 79.30%      0.04s  0.67%  runtime.semawakeup
+     0.04s  0.67% 79.97%      0.04s  0.67%  runtime.typePointers.nextFast (inline)
+     0.04s  0.67% 80.63%      0.09s  1.50%  syscall.encodeWTF16
+     0.04s  0.67% 81.30%      0.04s  0.67%  unicode/utf8.DecodeRuneInString (inline)
+     0.03s   0.5% 81.80%      0.36s  6.01%  github.com/BurntSushi/toml.(*parser).next
+     0.03s   0.5% 82.30%      0.04s  0.67%  internal/filepathlite.Clean
+     0.03s   0.5% 82.80%      0.03s   0.5%  runtime.(*itabTableType).find
+     0.03s   0.5% 83.31%      0.08s  1.34%  runtime.chanrecv
+     0.03s   0.5% 83.81%      0.11s  1.84%  runtime.mapassign_faststr
+     0.03s   0.5% 84.31%      0.03s   0.5%  runtime.memclrNoHeapPointers
+     0.03s   0.5% 84.81%      0.04s  0.67%  runtime.scanblock
+     0.02s  0.33% 85.14%      0.03s   0.5%  github.com/BurntSushi/toml.(*lexer).skip
+     0.02s  0.33% 85.48%      0.14s  2.34%  github.com/BurntSushi/toml.(*parser).setType
+     0.02s  0.33% 85.81%      0.59s  9.85%  github.com/BurntSushi/toml.(*parser).topLevel
+     0.02s  0.33% 86.14%      0.04s  0.67%  github.com/BurntSushi/toml.lexRawString
+     0.02s  0.33% 86.48%      0.11s  1.84%  runtime.mallocgcSmallScanNoHeader
+     0.01s  0.17% 86.64%      0.06s  1.00%  github.com/BurntSushi/toml.(*parser).setValue
+     0.01s  0.17% 86.81%      0.03s   0.5%  github.com/BurntSushi/toml.lexValue
+     0.01s  0.17% 86.98%      0.03s   0.5%  internal/bytealg.MakeNoZero
+     0.01s  0.17% 87.15%      0.67s 11.19%  reasonix/internal/contract/config.mergeTOMLProviders
+     0.01s  0.17% 87.31%      0.38s  6.34%  reasonix/internal/contract/config.resolveProviderCredentialWithResolver
+     0.01s  0.17% 87.48%      0.03s   0.5%  reflect.typedmemmove
+     0.01s  0.17% 87.65%      0.09s  1.50%  reflect.unsafe_New
+     0.01s  0.17% 87.81%      0.13s  2.17%  reflect.valueInterface
+     0.01s  0.17% 87.98%      0.05s  0.83%  runtime.(*mcache).refill
+     0.01s  0.17% 88.15%      0.04s  0.67%  runtime.(*mheap).allocSpan
+     0.01s  0.17% 88.31%      0.03s   0.5%  runtime.chansend
+     0.01s  0.17% 88.48%      0.05s  0.83%  runtime.growslice
+     0.01s  0.17% 88.65%      0.03s   0.5%  runtime.mapaccess1
+     0.01s  0.17% 88.81%      0.03s   0.5%  runtime.newarray
+     0.01s  0.17% 88.98%      0.03s   0.5%  runtime.pcvalue
+     0.01s  0.17% 89.15%      0.05s  0.83%  runtime.typePointers.next
+     0.01s  0.17% 89.32%      0.05s  0.83%  runtime.typedmemmove
+     0.01s  0.17% 89.48%      0.04s  0.67%  strings.(*Builder).grow
+     0.01s  0.17% 89.65%      0.04s  0.67%  syscall.UTF16ToString
+     0.01s  0.17% 89.82%      4.27s 71.29%  syscall.syscalln
+         0     0% 89.82%      0.03s   0.5%  encoding/json.(*decodeState).object
+         0     0% 89.82%      0.03s   0.5%  encoding/json.(*decodeState).unmarshal
+         0     0% 89.82%      0.03s   0.5%  encoding/json.(*decodeState).value
+         0     0% 89.82%      0.04s  0.67%  encoding/json.Unmarshal
+         0     0% 89.82%      0.95s 15.86%  github.com/BurntSushi/toml.(*Decoder).Decode
+         0     0% 89.82%      0.25s  4.17%  github.com/BurntSushi/toml.(*MetaData).unify
+         0     0% 89.82%      0.19s  3.17%  github.com/BurntSushi/toml.(*MetaData).unifySlice
+         0     0% 89.82%      0.19s  3.17%  github.com/BurntSushi/toml.(*MetaData).unifySliceArray
+         0     0% 89.82%      0.04s  0.67%  github.com/BurntSushi/toml.(*MetaData).unifyString
+         0     0% 89.82%      0.20s  3.34%  github.com/BurntSushi/toml.(*MetaData).unifyStruct
+         0     0% 89.82%      0.03s   0.5%  github.com/BurntSushi/toml.(*lexer).emit
+         0     0% 89.82%      0.07s  1.17%  github.com/BurntSushi/toml.(*parser).nextPos (inline)
+         0     0% 89.82%      0.05s  0.83%  github.com/BurntSushi/toml.(*parser).value
+         0     0% 89.82%      0.04s  0.67%  github.com/BurntSushi/toml.(*parser).valueArray
+         0     0% 89.82%      0.95s 15.86%  github.com/BurntSushi/toml.Decode

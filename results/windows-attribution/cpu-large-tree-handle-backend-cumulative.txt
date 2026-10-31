@@ -1,0 +1,69 @@
+File: baseline.test.exe
+Build ID: D:\a\reasonix\reasonix\results\baseline.test.exe2026-10-31 07:00:53.8820167 +0000 UTC
+Type: cpu
+Time: 2026-10-31 07:05:45 UTC
+Duration: 5.95s, Total samples = 6.01s (100.93%)
+Showing nodes accounting for 4.42s, 73.54% of 6.01s total
+Dropped 182 nodes (cum <= 0.03s)
+Showing top 60 nodes out of 194
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      5.59s 93.01%  reasonix/internal/contract/config.Roots.LoadForRootReadOnly (inline)
+         0     0%     0%      5.59s 93.01%  reasonix/internal/contract/config.Roots.loadForRoot
+         0     0%     0%      5.59s 93.01%  reasonix/internal/contract/config.benchmarkConfigMechanism.func1.1
+         0     0%     0%      5.59s 93.01%  reasonix/internal/contract/config.configLoadFixture.load
+         0     0%     0%      5.59s 93.01%  reasonix/internal/contract/config.loadConfigMechanism
+         0     0%     0%      5.59s 93.01%  testing.(*B).run1.func1
+         0     0%     0%      5.59s 93.01%  testing.(*B).runN
+     4.32s 71.88% 71.88%      4.33s 72.05%  runtime.cgocall
+         0     0% 71.88%      4.33s 72.05%  syscall.SyscallN
+         0     0% 71.88%      4.33s 72.05%  syscall.syscalln
+         0     0% 71.88%      2.07s 34.44%  reasonix/internal/contract/config.heldScope.narrow
+         0     0% 71.88%      1.99s 33.11%  path/filepath.EvalSymlinks (inline)
+         0     0% 71.88%      1.99s 33.11%  path/filepath.evalSymlinks
+         0     0% 71.88%      1.49s 24.79%  reasonix/internal/contract/config.resolveConfigAccessPath
+         0     0% 71.88%      1.46s 24.29%  reasonix/internal/contract/config.resolveConfigAccessPathUnpinned
+         0     0% 71.88%      1.44s 23.96%  reasonix/internal/base/workspaceid.PathFingerprint
+         0     0% 71.88%      1.44s 23.96%  reasonix/internal/contract/config.evalSymlinksAllowMissing
+         0     0% 71.88%      1.43s 23.79%  reasonix/internal/contract/config.resolveConfigReadPath
+         0     0% 71.88%      1.26s 20.97%  os.stat
+         0     0% 71.88%      1.26s 20.97%  path/filepath.normBase
+         0     0% 71.88%      1.26s 20.97%  path/filepath.toNorm
+         0     0% 71.88%      1.24s 20.63%  syscall.GetFileAttributesEx
+         0     0% 71.88%      1.08s 17.97%  reasonix/internal/contract/config.Roots.loadDotEnvForRoot
+         0     0% 71.88%      1.08s 17.97%  reasonix/internal/contract/config.loadConfigMechanism.func1
+         0     0% 71.88%      1.07s 17.80%  os.Lstat
+         0     0% 71.88%      1.07s 17.80%  os.lstatNolog
+         0     0% 71.88%      1.07s 17.80%  reasonix/internal/base/fileutil.ResolveExistingPath
+         0     0% 71.88%      1.07s 17.80%  reasonix/internal/contract/config.Roots.loadCredentialStoreForRoot (inline)
+         0     0% 71.88%      1.07s 17.80%  reasonix/internal/contract/config.Roots.loadCredentialStoreForScope
+         0     0% 71.88%      1.04s 17.30%  reasonix/internal/contract/config.statConfigPath
+         0     0% 71.88%      1.03s 17.14%  reasonix/internal/contract/config.mergeFileSnapshot (partial-inline)
+         0     0% 71.88%      1.03s 17.14%  reasonix/internal/contract/config.mergeFileSnapshotWithRead
+         0     0% 71.88%      1.02s 16.97%  reasonix/internal/contract/config.heldEndpoints.gateEndpoints
+         0     0% 71.88%      1.01s 16.81%  reasonix/internal/contract/config.(*Config).admit
+         0     0% 71.88%      1.01s 16.81%  reasonix/internal/contract/config.(*ProjectProgramStore).Approved
+         0     0% 71.88%         1s 16.64%  syscall.FindFirstFile
+         0     0% 71.88%         1s 16.64%  syscall.findFirstFile1
+         0     0% 71.88%      0.97s 16.14%  reasonix/internal/contract/config.Roots.credentialEnvNamesForScope
+         0     0% 71.88%      0.97s 16.14%  reasonix/internal/contract/config.decodeTOMLFile
+         0     0% 71.88%      0.91s 15.14%  github.com/BurntSushi/toml.(*Decoder).Decode
+         0     0% 71.88%      0.91s 15.14%  github.com/BurntSushi/toml.Decode
+         0     0% 71.88%      0.91s 15.14%  reasonix/internal/contract/config.decodeTOMLBytes
+         0     0% 71.88%      0.76s 12.65%  reasonix/internal/contract/config.mergeTOMLProviders
+     0.02s  0.33% 72.21%      0.74s 12.31%  github.com/BurntSushi/toml.parse
+         0     0% 72.21%      0.73s 12.15%  path/filepath.walkSymlinks
+         0     0% 72.21%      0.61s 10.15%  golang.org/x/sys/windows.GetFinalPathNameByHandle
+         0     0% 72.21%      0.61s 10.15%  reasonix/internal/base/fileutil.FinalPathOfHandle
+         0     0% 72.21%      0.57s  9.48%  os.ReadFile
+         0     0% 72.21%      0.56s  9.32%  reasonix/internal/contract/config.workspaceDir
+     0.03s   0.5% 72.71%      0.54s  8.99%  github.com/BurntSushi/toml.(*parser).topLevel
+         0     0% 72.71%      0.53s  8.82%  reasonix/internal/base/fileutil/encoding.ReadFileUTF8
+         0     0% 72.71%      0.51s  8.49%  reasonix/internal/contract/config.mergeFile
+         0     0% 72.71%      0.49s  8.15%  reasonix/internal/contract/config.(*Config).applyWorkspaceGrants
+         0     0% 72.71%      0.49s  8.15%  reasonix/internal/contract/config.(*ProjectGrantStore).Grant
+         0     0% 72.71%      0.49s  8.15%  reasonix/internal/contract/config.grantedToWorkspace
+     0.01s  0.17% 72.88%      0.45s  7.49%  github.com/BurntSushi/toml.(*parser).next
+         0     0% 72.88%      0.45s  7.49%  reasonix/internal/contract/config.decodeTOMLFileResolved
+     0.04s  0.67% 73.54%      0.44s  7.32%  github.com/BurntSushi/toml.(*lexer).nextItem (inline)
+         0     0% 73.54%      0.44s  7.32%  reasonix/internal/contract/config.mergeTOMLProviderAccess
+         0     0% 73.54%      0.38s  6.32%  reasonix/internal/contract/config.isolateDecodedProviders

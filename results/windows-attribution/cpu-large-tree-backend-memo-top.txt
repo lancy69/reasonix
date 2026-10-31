@@ -1,0 +1,69 @@
+File: baseline.test.exe
+Build ID: D:\a\reasonix\reasonix\results\baseline.test.exe2026-10-31 07:00:53.8820167 +0000 UTC
+Type: cpu
+Time: 2026-10-31 07:05:15 UTC
+Duration: 5.94s, Total samples = 5.88s (98.98%)
+Showing nodes accounting for 5.35s, 90.99% of 5.88s total
+Dropped 174 nodes (cum <= 0.03s)
+Showing top 60 nodes out of 187
+      flat  flat%   sum%        cum   cum%
+     4.47s 76.02% 76.02%      4.49s 76.36%  runtime.cgocall
+     0.07s  1.19% 77.21%      0.08s  1.36%  github.com/BurntSushi/toml.(*lexer).next
+     0.07s  1.19% 78.40%      0.07s  1.19%  runtime.semawakeup
+     0.05s  0.85% 79.25%      0.10s  1.70%  runtime.scanObject
+     0.04s  0.68% 79.93%      0.35s  5.95%  github.com/BurntSushi/toml.(*lexer).nextItem (inline)
+     0.04s  0.68% 80.61%      0.04s  0.68%  internal/filepathlite.(*lazybuf).append (inline)
+     0.04s  0.68% 81.29%      0.09s  1.53%  runtime.chanrecv
+     0.04s  0.68% 81.97%      0.13s  2.21%  runtime.selectnbrecv
+     0.04s  0.68% 82.65%      0.04s  0.68%  runtime.unlock2
+     0.04s  0.68% 83.33%      0.04s  0.68%  unicode/utf16.AppendRune (inline)
+     0.03s  0.51% 83.84%      0.49s  8.33%  github.com/BurntSushi/toml.(*parser).topLevel
+     0.03s  0.51% 84.35%      0.05s  0.85%  runtime.mallocgcSmallNoscan
+     0.03s  0.51% 84.86%      0.03s  0.51%  runtime.memclrNoHeapPointers
+     0.03s  0.51% 85.37%      0.03s  0.51%  runtime.preemptM
+     0.02s  0.34% 85.71%      0.05s  0.85%  github.com/BurntSushi/toml.(*lexer).emit
+     0.02s  0.34% 86.05%      0.37s  6.29%  github.com/BurntSushi/toml.(*parser).next
+     0.02s  0.34% 86.39%      0.07s  1.19%  github.com/BurntSushi/toml.Key.String
+     0.02s  0.34% 86.73%      0.07s  1.19%  internal/filepathlite.Clean
+     0.02s  0.34% 87.07%      1.85s 31.46%  reasonix/internal/contract/config.mergeFileSnapshotWithRead
+     0.02s  0.34% 87.41%      0.05s  0.85%  runtime.growslice
+     0.02s  0.34% 87.76%      0.19s  3.23%  runtime.mallocgc
+     0.02s  0.34% 88.10%      0.06s  1.02%  syscall.encodeWTF16
+     0.01s  0.17% 88.27%      0.79s 13.44%  github.com/BurntSushi/toml.(*Decoder).Decode
+     0.01s  0.17% 88.44%      0.11s  1.87%  github.com/BurntSushi/toml.(*MetaData).unify
+     0.01s  0.17% 88.61%      0.11s  1.87%  github.com/BurntSushi/toml.(*MetaData).unifyStruct
+     0.01s  0.17% 88.78%      0.06s  1.02%  github.com/BurntSushi/toml.(*parser).setValue
+     0.01s  0.17% 88.95%      0.06s  1.02%  github.com/BurntSushi/toml.lexRawString
+     0.01s  0.17% 89.12%      0.03s  0.51%  github.com/BurntSushi/toml.lexTopEnd
+     0.01s  0.17% 89.29%      0.04s  0.68%  internal/bytealg.MakeNoZero
+     0.01s  0.17% 89.46%      0.04s  0.68%  io.ReadAll
+     0.01s  0.17% 89.63%      0.41s  6.97%  reasonix/internal/contract/config.mergeTOMLProviders
+     0.01s  0.17% 89.80%      0.03s  0.51%  runtime.(*mheap).alloc
+     0.01s  0.17% 89.97%      0.03s  0.51%  runtime.lock2
+     0.01s  0.17% 90.14%      0.04s  0.68%  runtime.makeslice
+     0.01s  0.17% 90.31%      0.04s  0.68%  runtime.mapassign_faststr
+     0.01s  0.17% 90.48%      0.04s  0.68%  runtime.newobject
+     0.01s  0.17% 90.65%      0.05s  0.85%  strings.(*Builder).Grow
+     0.01s  0.17% 90.82%      0.41s  6.97%  syscall.FindClose
+     0.01s  0.17% 90.99%      0.07s  1.19%  syscall.FullPath
+         0     0% 90.99%      0.08s  1.36%  github.com/BurntSushi/toml.(*MetaData).unifySlice
+         0     0% 90.99%      0.07s  1.19%  github.com/BurntSushi/toml.(*MetaData).unifySliceArray
+         0     0% 90.99%      0.06s  1.02%  github.com/BurntSushi/toml.(*parser).nextPos (inline)
+         0     0% 90.99%      0.07s  1.19%  github.com/BurntSushi/toml.(*parser).setType
+         0     0% 90.99%      0.07s  1.19%  github.com/BurntSushi/toml.(*parser).value
+         0     0% 90.99%      0.07s  1.19%  github.com/BurntSushi/toml.(*parser).valueArray
+         0     0% 90.99%      0.79s 13.44%  github.com/BurntSushi/toml.Decode
+         0     0% 90.99%      0.62s 10.54%  github.com/BurntSushi/toml.parse
+         0     0% 90.99%      0.10s  1.70%  internal/poll.(*FD).Close
+         0     0% 90.99%      0.11s  1.87%  internal/poll.(*FD).Read
+         0     0% 90.99%      0.11s  1.87%  internal/poll.(*FD).Read.func1
+         0     0% 90.99%      0.10s  1.70%  internal/poll.(*FD).decref
+         0     0% 90.99%      0.10s  1.70%  internal/poll.(*FD).destroy
+         0     0% 90.99%      0.11s  1.87%  internal/poll.(*FD).execIO
+         0     0% 90.99%      0.03s  0.51%  internal/syscall/windows.NtCreateFile
+         0     0% 90.99%      0.03s  0.51%  internal/syscall/windows.Openat
+         0     0% 90.99%      0.10s  1.70%  os.(*File).Close
+         0     0% 90.99%      0.11s  1.87%  os.(*File).Read
+         0     0% 90.99%      0.05s  0.85%  os.(*File).Stat
+         0     0% 90.99%      0.11s  1.87%  os.(*File).read (inline)
+         0     0% 90.99%      0.04s  0.68%  os.(*Root).Lstat

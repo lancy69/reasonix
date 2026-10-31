@@ -1,0 +1,69 @@
+File: baseline.test.exe
+Build ID: D:\a\reasonix\reasonix\results\baseline.test.exe2026-10-31 07:00:53.8820167 +0000 UTC
+Type: cpu
+Time: 2026-10-31 07:05:00 UTC
+Duration: 5.98s, Total samples = 5.87s (98.24%)
+Showing nodes accounting for 5.58s, 95.06% of 5.87s total
+Dropped 130 nodes (cum <= 0.03s)
+Showing top 60 nodes out of 120
+      flat  flat%   sum%        cum   cum%
+     5.27s 89.78% 89.78%      5.28s 89.95%  runtime.cgocall
+     0.10s  1.70% 91.48%      0.10s  1.70%  runtime.semawakeup
+     0.02s  0.34% 91.82%      0.06s  1.02%  github.com/BurntSushi/toml.(*MetaData).unifyStruct
+     0.02s  0.34% 92.16%      0.03s  0.51%  github.com/BurntSushi/toml.(*lexer).emit
+     0.02s  0.34% 92.50%      0.10s  1.70%  github.com/BurntSushi/toml.(*lexer).nextItem (inline)
+     0.02s  0.34% 92.84%      0.20s  3.41%  github.com/BurntSushi/toml.(*parser).topLevel
+     0.02s  0.34% 93.19%      0.03s  0.51%  runtime.mallocgcSmallScanNoHeader
+     0.02s  0.34% 93.53%      0.04s  0.68%  runtime.mapassign_faststr
+     0.01s  0.17% 93.70%      0.11s  1.87%  github.com/BurntSushi/toml.(*parser).next
+     0.01s  0.17% 93.87%      0.04s  0.68%  github.com/BurntSushi/toml.(*parser).nextPos (inline)
+     0.01s  0.17% 94.04%      0.03s  0.51%  github.com/BurntSushi/toml.(*parser).setType
+     0.01s  0.17% 94.21%      0.23s  3.92%  github.com/BurntSushi/toml.parse
+     0.01s  0.17% 94.38%      3.23s 55.03%  path/filepath.toNorm
+     0.01s  0.17% 94.55%      0.03s  0.51%  runtime.makeslice
+     0.01s  0.17% 94.72%      0.05s  0.85%  runtime.mallocgc
+     0.01s  0.17% 94.89%      0.03s  0.51%  runtime.scanObject
+     0.01s  0.17% 95.06%      5.29s 90.12%  syscall.SyscallN
+         0     0% 95.06%      0.29s  4.94%  github.com/BurntSushi/toml.(*Decoder).Decode
+         0     0% 95.06%      0.06s  1.02%  github.com/BurntSushi/toml.(*MetaData).unify
+         0     0% 95.06%      0.05s  0.85%  github.com/BurntSushi/toml.(*MetaData).unifySlice
+         0     0% 95.06%      0.05s  0.85%  github.com/BurntSushi/toml.(*MetaData).unifySliceArray
+         0     0% 95.06%      0.04s  0.68%  github.com/BurntSushi/toml.(*parser).value
+         0     0% 95.06%      0.04s  0.68%  github.com/BurntSushi/toml.(*parser).valueArray
+         0     0% 95.06%      0.29s  4.94%  github.com/BurntSushi/toml.Decode
+         0     0% 95.06%      0.03s  0.51%  internal/poll.(*FD).Close
+         0     0% 95.06%      0.07s  1.19%  internal/poll.(*FD).Read
+         0     0% 95.06%      0.07s  1.19%  internal/poll.(*FD).Read.func1
+         0     0% 95.06%      0.03s  0.51%  internal/poll.(*FD).decref
+         0     0% 95.06%      0.03s  0.51%  internal/poll.(*FD).destroy
+         0     0% 95.06%      0.07s  1.19%  internal/poll.(*FD).execIO
+         0     0% 95.06%      0.03s  0.51%  os.(*File).Close
+         0     0% 95.06%      0.07s  1.19%  os.(*File).Read
+         0     0% 95.06%      0.07s  1.19%  os.(*File).read (inline)
+         0     0% 95.06%      0.03s  0.51%  os.(*file).close
+         0     0% 95.06%      1.75s 29.81%  os.Lstat
+         0     0% 95.06%      0.12s  2.04%  os.Open (inline)
+         0     0% 95.06%      0.12s  2.04%  os.OpenFile
+         0     0% 95.06%      0.24s  4.09%  os.ReadFile
+         0     0% 95.06%      0.06s  1.02%  os.Stat
+         0     0% 95.06%      1.75s 29.81%  os.lstatNolog
+         0     0% 95.06%      0.12s  2.04%  os.openFileNolog
+         0     0% 95.06%      0.07s  1.19%  os.readFileContents
+         0     0% 95.06%      1.81s 30.83%  os.stat
+         0     0% 95.06%      0.06s  1.02%  os.statNolog (inline)
+         0     0% 95.06%      4.89s 83.30%  path/filepath.EvalSymlinks (partial-inline)
+         0     0% 95.06%      4.89s 83.30%  path/filepath.evalSymlinks
+         0     0% 95.06%      3.22s 54.86%  path/filepath.normBase
+         0     0% 95.06%      1.66s 28.28%  path/filepath.walkSymlinks
+         0     0% 95.06%      0.22s  3.75%  reasonix/internal/base/fileutil/encoding.ReadFileUTF8
+         0     0% 95.06%      0.46s  7.84%  reasonix/internal/base/workspaceid.PathFingerprint
+         0     0% 95.06%      0.32s  5.45%  reasonix/internal/contract/config.(*Config).admit
+         0     0% 95.06%      0.16s  2.73%  reasonix/internal/contract/config.(*Config).applyWorkspaceGrants
+         0     0% 95.06%      0.08s  1.36%  reasonix/internal/contract/config.(*CredentialResolver).ResolveGlobalFirst
+         0     0% 95.06%      0.16s  2.73%  reasonix/internal/contract/config.(*ProjectGrantStore).Grant
+         0     0% 95.06%      0.32s  5.45%  reasonix/internal/contract/config.(*ProjectProgramStore).Approved
+         0     0% 95.06%      5.66s 96.42%  reasonix/internal/contract/config.Roots.LoadForRootReadOnly
+         0     0% 95.06%      1.26s 21.47%  reasonix/internal/contract/config.Roots.credentialEnvNamesForScope
+         0     0% 95.06%      0.24s  4.09%  reasonix/internal/contract/config.Roots.credentialsStoreMode
+         0     0% 95.06%      1.29s 21.98%  reasonix/internal/contract/config.Roots.loadCredentialStoreForRoot (inline)
+         0     0% 95.06%      1.29s 21.98%  reasonix/internal/contract/config.Roots.loadCredentialStoreForScope
