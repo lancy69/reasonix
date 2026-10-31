@@ -1,22 +1,28 @@
 {
   "baseline": "5f372e2229826a00b3a368ec1a1da9d1a1782147",
-  "candidate": "e66697fa87f1e1b11668489a9e2d9d25e05da486",
+  "candidate": "9deea7884f8c1d399e5ae40c0f8df4434257789f",
   "source_sha256": {
     "internal/contract/config/path_access.go": "18716801ee08c8fd6b3204d296e71131b140a3cbbc65e8783d86edf277f37721",
     "internal/contract/config/path_eval_windows.go": "d1a1238cc287b12cd3bf5d3c4cf863d52c7d0e400a65d038d0843da76a895599",
     "internal/contract/config/path_eval_other.go": "b74f917596566c841ef05fbf619613c7ab7529f21fd1f3ed24c5831f5203eacc",
-    "internal/contract/config/path_access_windows_test.go": "e6c7fc03da415d2408ab03cde54a730b8d57c8e83c5f1c5bf447cd6679e3b69b",
+    "internal/contract/config/path_access_windows_test.go": "5d5b5346ddda7bcec957d092a1c7b8d7184d1af1c2a3a5437f9cbc3abfaff892",
     "docs/CONFIG_PATHS.md": "f843289d58ca49479edc78c4227360a37beb2b66403de38b5ab809469f8582f9"
   },
   "smoke_sha256": "21bbab9af7cc8cd03d81c62fa2e796177d7539ac082230893d71ba8e9a29a572",
   "fixture_sha256": "ca9dbe8eb2aa91899b133a88b53a2b279ba336304036f53e1247a85698326185",
   "payload_sha256": {
-    ".github/workflows/12533-windows-implementation.yml": "536bafc10eccebbd3f68b42df9bc4ed0f0d961abb2a0b931a6d21ee4d67d7930",
+    ".github/workflows/12533-windows-implementation.yml": "f68620b9629b631b70a319ecf1b1de1ec3a50c3d276eaa89f635a2b8dce71613",
     "internal/contract/config/path_resolution_benchmark_test.go": "ca9dbe8eb2aa91899b133a88b53a2b279ba336304036f53e1247a85698326185",
     "scripts/benchmark-config-load.py": "b90e634b8a4afb8448ec98af55b34be5950515614a6eebc7a2af62f95473d5b7",
-    "scripts/verify-windows-config.py": "be7ee23a974809474591016ce60873b87ef5b18d50cb3b63136627245da50560",
-    "native/path_access_windows_test.go.source": "e6c7fc03da415d2408ab03cde54a730b8d57c8e83c5f1c5bf447cd6679e3b69b",
-    "native/smoke/main.go": "21bbab9af7cc8cd03d81c62fa2e796177d7539ac082230893d71ba8e9a29a572"
+    "scripts/verify-windows-config.py": "36f72acc436838581d7e09c845531d1e086be5f64648d272a036f051324d7553",
+    "native/path_access_windows_test.go.source": "5d5b5346ddda7bcec957d092a1c7b8d7184d1af1c2a3a5437f9cbc3abfaff892",
+    "native/smoke/main.go": "21bbab9af7cc8cd03d81c62fa2e796177d7539ac082230893d71ba8e9a29a572",
+    "native/path_access_metadata_probe_windows_test.go.source": "5598841ea7558d3016f8996c02c7b0a760bda5b4865e91da0a46301f2aed9de3"
   },
-  "purpose": "Actual guarded Windows backend; SDK-control compatibility, relative allocation effect, real Load plus boot.Build smoke, paired public loads and separate CPU diagnostics. No raw-helper variant."
+  "previous_attempt": {
+    "run": 41188978166,
+    "durable_results": "92835485bd1ca3a0d55cd310163ea0721cf81ced",
+    "reason": "Correct nil-error proxy to actual retained settings; add independent metadata-permission probe"
+  },
+  "purpose": "Actual guarded backend versus refreshed SDK; unchanged production, corrected consumer contract test, controlled DACL observations, relative allocation effect, actual Build smoke, paired public loads and separate CPU diagnostics."
 }

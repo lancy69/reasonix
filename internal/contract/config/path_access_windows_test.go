@@ -90,6 +90,23 @@ func TestWindowsConfigLoadKeepsSDKPathSemantics(t *testing.T) {
 			want, wantErr := RootsForHome(home).LoadForRootReadOnly(root)
 			evalSymlinks = backend
 			got, gotErr := RootsForHome(home).LoadForRootReadOnly(root)
+			if name == "junction-outside" {
+				row := map[string]any{"selected_project_source": ProjectConfigPath(root), "sdk_error_present": wantErr != nil, "default_error_present": gotErr != nil}
+				if want != nil {
+					row["sdk_recall"], row["sdk_warnings"] = want.Memory.RecallLimit, want.LoadWarnings()
+				}
+				if got != nil {
+					row["default_recall"], row["default_warnings"] = got.Memory.RecallLimit, got.LoadWarnings()
+				}
+				diagnostic, err := json.Marshal(row)
+				if err != nil {
+					t.Fatal(err)
+				}
+				t.Logf("CONFIG_JUNCTION_OUTSIDE %s", diagnostic)
+				if (want != nil && want.Memory.RecallLimit != 37) || (got != nil && got.Memory.RecallLimit != 37) {
+					t.Fatal("an escaping project junction changed the user's retained settings")
+				}
+			}
 			if (gotErr == nil) != (wantErr == nil) {
 				t.Fatalf("load error = %v, SDK load error = %v", gotErr, wantErr)
 			}
@@ -103,14 +120,20 @@ func TestWindowsConfigLoadKeepsSDKPathSemantics(t *testing.T) {
 				}
 				return
 			}
-			if name == "junction-outside" || name == "broken-link" {
-				t.Fatal("SDK control accepted an escaping or broken project link")
+			if name == "broken-link" {
+				t.Fatal("SDK control accepted a broken project link")
 			}
 			if name == "junction-inside" {
 				wantRecall = 71
 			}
 			if want.Memory.RecallLimit != wantRecall || got.Memory.RecallLimit != wantRecall {
 				t.Fatalf("recall limit = %d, SDK = %d, want %d", got.Memory.RecallLimit, want.Memory.RecallLimit, wantRecall)
+			}
+			if name == "junction-outside" {
+				if len(want.LoadWarnings()) != len(got.LoadWarnings()) {
+					t.Fatalf("source-refusal warning count changed: got %v, SDK %v", got.LoadWarnings(), want.LoadWarnings())
+				}
+				return
 			}
 			if len(want.LoadWarnings()) != 0 || len(got.LoadWarnings()) != 0 {
 				t.Fatalf("unexpected load warnings: got %v, SDK %v", got.LoadWarnings(), want.LoadWarnings())

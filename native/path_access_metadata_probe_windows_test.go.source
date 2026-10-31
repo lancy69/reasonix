@@ -1,0 +1,253 @@
+//go:build windows
+
+package config
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"os"
+	"path/filepath"
+	"testing"
+
+	"golang.org/x/sys/windows"
+
+	"reasonix/internal/base/fileutil"
+	"reasonix/internal/base/testenv"
+)
+
+type metadataProbeACL struct {
+	path       string
+	descriptor *windows.SECURITY_DESCRIPTOR
+	acl        *windows.ACL
+	info       windows.SECURITY_INFORMATION
+}
+
+func metadataProbeSaveACL(path string) (metadataProbeACL, error) {
+	sd, err := windows.GetNamedSecurityInfo(path, windows.SE_FILE_OBJECT, windows.DACL_SECURITY_INFORMATION)
+	if err != nil {
+		return metadataProbeACL{}, err
+	}
+	acl, _, err := sd.DACL()
+	if err != nil {
+		return metadataProbeACL{}, err
+	}
+	control, _, err := sd.Control()
+	if err != nil {
+		return metadataProbeACL{}, err
+	}
+	info := windows.SECURITY_INFORMATION(windows.DACL_SECURITY_INFORMATION | windows.UNPROTECTED_DACL_SECURITY_INFORMATION)
+	if control&windows.SE_DACL_PROTECTED != 0 {
+		info = windows.DACL_SECURITY_INFORMATION | windows.PROTECTED_DACL_SECURITY_INFORMATION
+	}
+	return metadataProbeACL{path, sd, acl, info}, nil
+}
+
+func metadataProbeSetACL(path, sddl string) error {
+	sd, err := windows.SecurityDescriptorFromString(sddl)
+	if err != nil {
+		return err
+	}
+	acl, _, err := sd.DACL()
+	if err != nil {
+		return err
+	}
+	return windows.SetNamedSecurityInfo(path, windows.SE_FILE_OBJECT, windows.DACL_SECURITY_INFORMATION|windows.PROTECTED_DACL_SECURITY_INFORMATION, nil, nil, acl, nil)
+}
+
+func metadataProbeError(err error) any {
+	if err == nil {
+		return nil
+	}
+	row := map[string]any{"type": fmt.Sprintf("%T", err), "text": err.Error(), "permission": os.IsPermission(err), "not_exist": os.IsNotExist(err)}
+	var pathErr *os.PathError
+	if errors.As(err, &pathErr) {
+		row["op"], row["path"], row["cause_type"] = pathErr.Op, pathErr.Path, fmt.Sprintf("%T", pathErr.Err)
+	}
+	return row
+}
+
+func metadataProbeEmit(t *testing.T, row map[string]any) {
+	t.Helper()
+	row["code"] = "config.metadata_fallback_probe"
+	data, err := json.Marshal(row)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("CONFIG_METADATA_FALLBACK_PROBE %s", data)
+}
+
+func metadataProbeLoad(home, root, source string, backend func(string) (string, error)) (map[string]any, bool) {
+	previous := evalSymlinks
+	evalSymlinks = backend
+	defer func() { evalSymlinks = previous }()
+	resolved, accessErr := resolveConfigAccessPath(source, false)
+	cfg, err := RootsForHome(home).LoadForRootReadOnly(root)
+	row := map[string]any{"selected_project_source": ProjectConfigPath(root), "guard_resolved": resolved, "guard_error": metadataProbeError(accessErr), "load_error": metadataProbeError(err), "config_returned": cfg != nil}
+	matched := false
+	if cfg != nil {
+		row["recall"], row["warnings"], row["ignored"] = cfg.Memory.RecallLimit, cfg.LoadWarnings(), cfg.IgnoredProjectSettings()
+		matched = err == nil && cfg.Memory.RecallLimit == 71 && len(cfg.LoadWarnings()) == 0
+	}
+	row["expected_project_settings_loaded"] = matched
+	return row, matched
+}
+
+func TestConfigMetadataFallbackProbe(t *testing.T) {
+	actual := evalSymlinks
+	t.Cleanup(func() { evalSymlinks = actual })
+	for _, layout := range []string{"root-file", "nested-file"} {
+		for _, permission := range []struct {
+			name string
+			mask uint32
+		}{{"deny-read-attributes", windows.FILE_READ_ATTRIBUTES}, {"deny-list-only", windows.FILE_LIST_DIRECTORY}} {
+			t.Run(layout+"/"+permission.name, func(t *testing.T) {
+				base, err := filepath.EvalSymlinks(testenv.TempDir(t))
+				if err != nil {
+					metadataProbeEmit(t, map[string]any{"phase": "unavailable", "reason": "temporary root cannot be canonicalized", "error": metadataProbeError(err)})
+					return
+				}
+				home, root := filepath.Join(base, "home"), filepath.Join(base, "workspace")
+				for _, path := range []string{home, root} {
+					if err := os.Mkdir(path, 0o700); err != nil {
+						t.Fatal(err)
+					}
+				}
+				source := filepath.Join(root, "reasonix.toml")
+				protected := []string{source}
+				if layout == "nested-file" {
+					parent := filepath.Join(root, ".reasonix")
+					if err := os.Mkdir(parent, 0o700); err != nil {
+						t.Fatal(err)
+					}
+					source = filepath.Join(parent, "reasonix.toml")
+					protected = []string{source, parent}
+				}
+				for path, body := range map[string]string{
+					filepath.Join(home, "config.toml"): "[memory]\nrecall_limit = 11\n",
+					source:                             "[memory]\nrecall_limit = 71\n",
+				} {
+					if err := os.WriteFile(path, []byte(body), 0o600); err != nil {
+						t.Fatal(err)
+					}
+				}
+				t.Setenv("REASONIX_HOME", home)
+				t.Setenv("REASONIX_CREDENTIALS_STORE", "file")
+				sdkBefore, sdkReady := metadataProbeLoad(home, root, source, filepath.EvalSymlinks)
+				actualBefore, actualReady := metadataProbeLoad(home, root, source, actual)
+				metadataProbeEmit(t, map[string]any{"phase": "before-acl", "layout": layout, "permission": permission.name, "sdk": sdkBefore, "actual": actualBefore})
+				if !sdkReady || !actualReady {
+					metadataProbeEmit(t, map[string]any{"phase": "unavailable", "reason": "ordinary public load precondition failed", "layout": layout, "permission": permission.name})
+					return
+				}
+				user, err := windows.GetCurrentProcessToken().GetTokenUser()
+				if err != nil {
+					metadataProbeEmit(t, map[string]any{"phase": "unavailable", "reason": "current token SID unavailable", "error": metadataProbeError(err)})
+					return
+				}
+				sid := user.User.Sid.String()
+				var saved []metadataProbeACL
+				for _, path := range append(append([]string{}, protected...), root) {
+					state, err := metadataProbeSaveACL(path)
+					if err != nil {
+						metadataProbeEmit(t, map[string]any{"phase": "unavailable", "reason": "original DACL unavailable before changes", "error": metadataProbeError(err)})
+						return
+					}
+					saved = append(saved, state)
+				}
+				defer func() {
+					var failures []error
+					for i := len(saved) - 1; i >= 0; i-- {
+						state := saved[i]
+						if err := windows.SetNamedSecurityInfo(state.path, windows.SE_FILE_OBJECT, state.info, nil, nil, state.acl, nil); err != nil {
+							failures = append(failures, err)
+						}
+					}
+					restoreErr := errors.Join(failures...)
+					metadataProbeEmit(t, map[string]any{"phase": "restored", "layout": layout, "permission": permission.name, "restored": restoreErr == nil, "error": metadataProbeError(restoreErr)})
+					if restoreErr != nil {
+						t.Error(restoreErr)
+					}
+				}()
+				for _, path := range protected {
+					if err := metadataProbeSetACL(path, "D:P(A;;FA;;;"+sid+")"); err != nil {
+						metadataProbeEmit(t, map[string]any{"phase": "unavailable", "reason": "child DACL protection refused", "error": metadataProbeError(err)})
+						return
+					}
+				}
+				if err := metadataProbeSetACL(root, fmt.Sprintf("D:P(D;;0x%x;;;%s)(A;;FA;;;%s)", permission.mask, sid, sid)); err != nil {
+					metadataProbeEmit(t, map[string]any{"phase": "unavailable", "reason": "directory DACL change refused", "error": metadataProbeError(err)})
+					return
+				}
+				data, readErr := os.ReadFile(source)
+				fileInfo, fileStatErr := os.Lstat(source)
+				_, rootStatErr := os.Lstat(root)
+				dir, dirOpenErr := os.Open(root)
+				var dirReadErr, dirCloseErr error
+				if dirOpenErr == nil {
+					_, dirReadErr = dir.Readdirnames(-1)
+					dirCloseErr = dir.Close()
+				}
+				rootName, err := windows.UTF16PtrFromString(root)
+				if err != nil {
+					t.Fatal(err)
+				}
+				handle, traverseErr := windows.CreateFile(rootName, windows.FILE_TRAVERSE, windows.FILE_SHARE_READ|windows.FILE_SHARE_WRITE|windows.FILE_SHARE_DELETE, nil, windows.OPEN_EXISTING, windows.FILE_FLAG_BACKUP_SEMANTICS, 0)
+				var traverseCloseErr error
+				if traverseErr == nil {
+					traverseCloseErr = windows.CloseHandle(handle)
+				}
+				sdkPath, sdkPathErr := filepath.EvalSymlinks(source)
+				handlePath, handlePathErr := fileutil.ResolveExistingPath(source)
+				defaultPath, defaultPathErr := actual(source)
+				name, err := windows.UTF16PtrFromString(source)
+				if err != nil {
+					t.Fatal(err)
+				}
+				var volume [4]uint16
+				volumeErr := windows.GetVolumePathName(name, &volume[0], uint32(len(volume)))
+				fileReadable := readErr == nil && string(data) == "[memory]\nrecall_limit = 71\n"
+				plainFile := fileStatErr == nil && fileInfo.Mode().IsRegular() && fileInfo.Mode()&os.ModeSymlink == 0
+				valid := fileReadable && plainFile && traverseErr == nil
+				if permission.mask == windows.FILE_READ_ATTRIBUTES {
+					valid = valid && os.IsPermission(rootStatErr) && os.IsPermission(sdkPathErr)
+				} else {
+					valid = valid && (os.IsPermission(dirOpenErr) || os.IsPermission(dirReadErr))
+				}
+				sdkLoad, sdkOK := metadataProbeLoad(home, root, source, filepath.EvalSymlinks)
+				actualLoad, actualOK := metadataProbeLoad(home, root, source, actual)
+				_, rootAfterErr := os.Lstat(root)
+				if permission.mask == windows.FILE_READ_ATTRIBUTES {
+					valid = valid && os.IsPermission(rootAfterErr)
+				}
+				outcome := "unavailable-or-inconclusive-fixture"
+				if valid {
+					switch {
+					case !sdkOK:
+						outcome = "public-sdk-control-not-loaded"
+					case !actualOK:
+						outcome = "public-load-regression-observed"
+					default:
+						outcome = "matching-public-load-success"
+					}
+				}
+				metadataProbeEmit(t, map[string]any{
+					"phase": "observed", "layout": layout, "permission": permission.name, "root": root, "source": source,
+					"valid_fixture": valid, "file_readable": fileReadable, "plain_regular_file": plainFile,
+					"file_read_error": metadataProbeError(readErr), "file_lstat_error": metadataProbeError(fileStatErr),
+					"root_lstat_error": metadataProbeError(rootStatErr), "root_lstat_after_error": metadataProbeError(rootAfterErr),
+					"directory_open_error": metadataProbeError(dirOpenErr), "directory_read_error": metadataProbeError(dirReadErr), "directory_close_error": metadataProbeError(dirCloseErr),
+					"traverse_allowed": traverseErr == nil, "traverse_error": metadataProbeError(traverseErr), "traverse_close_error": metadataProbeError(traverseCloseErr),
+					"sdk_resolved": sdkPath, "sdk_resolution_error": metadataProbeError(sdkPathErr),
+					"handle_resolved": handlePath, "handle_resolution_error": metadataProbeError(handlePathErr),
+					"default_resolved": defaultPath, "default_resolution_error": metadataProbeError(defaultPathErr),
+					"volume_root_units": volume, "volume_root_error": metadataProbeError(volumeErr),
+					"sdk": sdkLoad, "actual": actualLoad, "sdk_settings_loaded": sdkOK, "actual_settings_loaded": actualOK,
+					"regression_observed": valid && sdkOK && !actualOK,
+					"outcome":             outcome,
+					"scope":               "constructed owned temporary filesystem state through public DACL APIs; no observed production incident; no privileges enabled or host security settings changed",
+				})
+			})
+		}
+	}
+}

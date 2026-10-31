@@ -71,6 +71,8 @@ def main():
     parser.add_argument("--smoke-source", type=Path, required=True)
     parser.add_argument("--smoke-sha256", required=True)
     parser.add_argument("--effect-test", required=True)
+    parser.add_argument("--permission-source", type=Path, required=True)
+    parser.add_argument("--permission-sha256", required=True)
     args = parser.parse_args()
     if os.name != "nt":
         parser.error("this verifier requires native Windows, not cross-compilation")
@@ -110,6 +112,36 @@ def main():
             else:
                 destination.write_bytes(compatibility)
                 created.append(destination)
+        permission_probe = args.permission_source.read_bytes()
+        if hashlib.sha256(permission_probe).hexdigest() != args.permission_sha256:
+            raise RuntimeError("permission probe checksum mismatch")
+        record["permission_sha256"] = args.permission_sha256
+        record["permission_probe"] = {}
+        for label, source in sources.items():
+            destination = source / "internal/contract/config/path_access_metadata_probe_windows_test.go"
+            if destination.exists():
+                raise RuntimeError("refusing to overwrite an existing metadata probe")
+            destination.write_bytes(permission_probe)
+            created.append(destination)
+            try:
+                command = ["go", "test", "-json", "-count=1", "-parallel=2",
+                           "-run=^TestConfigMetadataFallbackProbe$", "./internal/contract/config"]
+                result = run(command, source, env, output, label + "-permission-probe.jsonl")
+                events = go_events(result.stdout)
+                marker = "CONFIG_METADATA_FALLBACK_PROBE "
+                rows = [json.loads(event["Output"].partition(marker)[2].strip()) for event in events
+                        if marker in event.get("Output", "")]
+                if not rows or any(row.get("code") != "config.metadata_fallback_probe" for row in rows):
+                    raise RuntimeError("permission probe did not emit its structured protocol")
+                record["permission_probe"][label] = rows
+                if result.returncode:
+                    raise RuntimeError(label + " permission probe setup or cleanup failed")
+                if any(row.get("regression_observed") is True for row in rows):
+                    raise RuntimeError(label + " native permission probe observed a public-load regression")
+                record["commands"].append({"phase": label + "-permission-probe", "command": command, "expected_exit": 0})
+            finally:
+                destination.unlink()
+                created.remove(destination)
         pattern = "^(" + "|".join((*COMPATIBILITY_TESTS, args.effect_test)) + ")$"
         command = ["go", "test", "-json", "-count=1", "-parallel=2", "-run=" + pattern,
                    "./internal/contract/config"]
