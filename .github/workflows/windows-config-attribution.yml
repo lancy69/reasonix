@@ -1,0 +1,43 @@
+name: Windows config path attribution
+on:
+  push:
+    branches: [evidence/12533-windows-attribution]
+permissions:
+  contents: read
+jobs:
+  investigate:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    env:
+      GOMAXPROCS: '2'
+      GOFLAGS: '-p=2'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: harness
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: esengine/DeepSeek-Reasonix
+          ref: be65b117e00c364e39c08bc0dece34b51fa5de71
+          path: before
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: lancy69/reasonix
+          ref: a4d746b83c57374ff5e1b59122db8267dfd4c6d6
+          path: after
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version-file: before/go.mod
+          cache: false
+      - name: Run static-fixture causal controls and compatibility probes
+        run: python harness/scripts/investigate-config-paths.py --before before --after after --output results
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: windows-config-attribution
+          path: results/
+          if-no-files-found: error
+          retention-days: 30
