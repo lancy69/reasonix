@@ -258,6 +258,11 @@ command-line flags
 - Both paths have the same project-scope restrictions: neither can set user-only
   options or resolve through a symlink outside the project.
 
+On Windows, ordinary paths on local fixed-drive roots may use handle-based
+resolution when the DOS path is unchanged. Aliases, mounted folders, network
+drives, extended namespaces, and unavailable metadata use Go's standard resolver.
+This resolver caches neither paths nor file contents.
+
 To keep local configuration self-contained, put `*` in `.reasonix/.gitignore`
 and store the configuration in `.reasonix/reasonix.toml`.
 
