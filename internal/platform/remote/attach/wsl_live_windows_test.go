@@ -3,6 +3,7 @@
 package attach
 
 import (
+	"context"
 	"net/http"
 	"os"
 	"testing"
@@ -69,5 +70,29 @@ func TestLiveAttachBringsUpAKernelInADistribution(t *testing.T) {
 		t.Fatalf("UNC attach = %+v, %v; want the kernel at %s for %s", unc, err, ep.Addr, ep.Workspace)
 	}
 	unc.Release()
+	if resp, err := http.DefaultClient.Do(req); err != nil {
+		t.Fatalf("releasing shared panes stopped the kernel: %v", err)
+	} else {
+		resp.Body.Close()
+	}
 	ep.Release()
+	ctx, cancel := context.WithTimeout(t.Context(), 10*time.Second)
+	defer cancel()
+	for {
+		check, _ := http.NewRequestWithContext(ctx, http.MethodGet, "http://"+ep.Addr+"/", nil)
+		resp, err := http.DefaultClient.Do(check)
+		if err != nil {
+			if ctx.Err() != nil {
+				t.Fatal("kernel did not stop before the shutdown deadline")
+			}
+			break
+		}
+		resp.Body.Close()
+		select {
+		case <-ctx.Done():
+			t.Fatal("kernel is still serving after final release")
+		case <-time.After(100 * time.Millisecond):
+		}
+	}
+	t.Log("kernel no longer answers over loopback after final release")
 }

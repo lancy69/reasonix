@@ -4,8 +4,8 @@
 //
 // One connection carries every workspace opened on that host, and one forward
 // carries every pane opened on that workspace, so both are reference-counted
-// and the last holder out tears them down. The remote serve is left running:
-// it outlives the link by design, and the next connect reuses it.
+// and the last holder out tears them down. SSH kernels outlive the link for
+// reuse; WSL links explicitly stop their kernels on close.
 package attach
 
 import (
@@ -498,6 +498,9 @@ func (p *Pool) serve(ctx context.Context, l *link, s *space, workspace string, c
 		s.err = err
 		p.forgetSpace(l, s)
 		return
+	}
+	if wsl, ok := l.client.(*wslLink); ok {
+		wsl.retainKernel(res.State.Workspace)
 	}
 	// Named per workspace: a second one on this host must not replace the
 	// first one's forward, which one shared reserved name would do.

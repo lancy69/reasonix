@@ -14,6 +14,7 @@ import (
 
 	"reasonix/internal/contract/config"
 	"reasonix/internal/platform/remote"
+	"reasonix/internal/platform/remote/bootstrap"
 	"reasonix/internal/platform/remote/forward"
 	"reasonix/internal/platform/remote/wslconn"
 	"reasonix/internal/platform/wsl"
@@ -35,6 +36,9 @@ type wslLink struct {
 	anchorIn   io.Writer // guarded by mu; nil while no session is up
 	anchorUp   chan struct{}
 	upOnce     sync.Once
+	kernels    map[string]struct{}
+	closeOnce  sync.Once
+	closeErr   error
 
 	mu   sync.Mutex
 	subs map[int]func(remote.StatusEvent)
@@ -116,10 +120,9 @@ func (l *wslLink) Start(ctx context.Context) error {
 // for another.
 var anchorRetry = 2 * time.Second
 
-// holdAnchor keeps one shell session open and feeds it the commands that must
-// outlive the call that sent them: WSL ends everything a wsl.exe session
-// started when it ends, setsid and nohup included. A lost session is asked for
-// again, and the kernel it held is gone.
+// holdAnchor feeds launch commands through a persistent shell. Whether its
+// detached children survive a lost session depends on WSL; Close explicitly
+// stops the kernels instead of relying on session teardown.
 func (l *wslLink) holdAnchor(ctx context.Context) {
 	defer close(l.anchorDone)
 	for attempt := 1; ctx.Err() == nil; attempt++ {
@@ -272,13 +275,38 @@ func (l *wslLink) collect(ctx context.Context, id string) (remote.ExecResult, er
 	return remote.ExecResult{Stdout: out, Stderr: errb, ExitCode: code}, nil
 }
 
-func (l *wslLink) Close() error {
-	if l.anchorStop != nil {
-		l.anchorStop()
-		<-l.anchorDone
+func (l *wslLink) retainKernel(workspace string) {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	if l.kernels == nil {
+		l.kernels = make(map[string]struct{})
 	}
-	l.publish(remote.StatusEvent{Status: remote.StatusStopped})
-	return nil
+	l.kernels[workspace] = struct{}{}
+}
+
+func (l *wslLink) Close() error {
+	l.closeOnce.Do(func() {
+		l.mu.Lock()
+		workspaces := make([]string, 0, len(l.kernels))
+		for workspace := range l.kernels {
+			workspaces = append(workspaces, workspace)
+		}
+		l.mu.Unlock()
+		for _, workspace := range workspaces {
+			ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+			err := bootstrap.Stop(ctx, l.Conn, workspace)
+			cancel()
+			if err != nil {
+				l.closeErr = errors.Join(l.closeErr, fmt.Errorf("stop WSL kernel for %s: %w", workspace, err))
+			}
+		}
+		if l.anchorStop != nil {
+			l.anchorStop()
+			<-l.anchorDone
+		}
+		l.publish(remote.StatusEvent{Status: remote.StatusStopped, Err: l.closeErr})
+	})
+	return l.closeErr
 }
 
 func (l *wslLink) Subscribe(fn func(remote.StatusEvent)) func() {

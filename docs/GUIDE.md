@@ -510,11 +510,12 @@ A WSL distribution on a Windows machine is a host with `kind = "wsl"` and a `dis
   its distributions (WSL 1 ones are shown disabled). Studio then opens it like any other machine in the list.
 - Connecting needs WSL 2 and a distribution that has `ps`
   and `nohup`; a minimal image without them is refused with the missing name.
-- The kernel runs inside a shell session Studio keeps open, because WSL ends everything a session started when it ends.
-  - When Studio closes its link, the kernel goes away with the distribution (WSL stops an idle one after about 15
-    seconds).
+- Studio launches the kernel through a shell session it keeps open.
+  - When the last workspace on the link is released, or Studio closes the pool, Studio explicitly stops the
+    kernels served by that link before closing the shell. Reconnecting starts a new kernel.
   - Conversations are kept on disk and resume on the next connect.
-  - Nothing keeps a distribution running behind your back.
+  - Reasonix does not rely on WSL reaping detached processes and does not terminate the distribution or unrelated
+    processes. WSL can stop the distribution once nothing else keeps it running.
 - Model credentials come from the distribution's own configuration (`provider = "remote"`): under WSL's default
   networking the distribution cannot reach this machine's loopback, so this machine's provider is not shared.
 - A folder chosen as a Windows path (`C:\work\app` or `\\wsl.localhost\<distro>\home\me\app`) is translated by
